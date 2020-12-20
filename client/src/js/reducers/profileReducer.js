@@ -10,6 +10,9 @@ import {
   DELETE_PROFILE_SUCCESS,
  
   DELETE_PROFILE_FAIL,
+  EDIT_PROFILE,
+  EDIT_PROFILE_SUCCESS,
+  EDIT_PROFILE_FAIL,
 } from "../constants/action-types";
 
 // initialState
@@ -58,6 +61,12 @@ const profileReducer = (state = initialState, { type, payload }) => {
         errors: null,
         profile: null,
       };
+      case EDIT_PROFILE:
+      return { ...state, loadProfile: true };
+    case EDIT_PROFILE_SUCCESS:
+      return { ...state, loadProfile: false, profile: payload };
+    case EDIT_PROFILE_FAIL:
+      return { ...state, loadProfile: false, errors: payload };
 
     default:
       return state;

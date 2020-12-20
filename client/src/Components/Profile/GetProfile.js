@@ -3,22 +3,38 @@ import { useSelector, useDispatch } from "react-redux";
 import { EmptyUser } from "../../js/actions/actionUser";
 import { EmptyProfile } from "../../js/actions/actionprofile";
 import "./GetProfile.css";
+import { makeStyles } from "@material-ui/core/styles";
 import { Redirect, useHistory } from "react-router-dom";
 import { Spinner } from "reactstrap";
 import { deleteProfile } from "../../js/actions/actionprofile";
-import { Button, Modal } from "react-bootstrap";
-
+import { Button, Modal, Form } from "react-bootstrap";
+import IconButton from "@material-ui/core/IconButton";
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
+const useStyles = makeStyles((theme) => ({
+  input: {
+    display: "none",
+  },
+}));
 function GetProfile() {
   const dispatch = useDispatch();
+  const [image, setImage] = useState()
   const user = useSelector((state) => state.profileReducer.profile.user);
   const profile = useSelector((state) => state.profileReducer.profile);
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);
   const token = localStorage.getItem("token");
   const history = useHistory();
   const [show, setShow] = useState(false);
-
+  const [showEdit, setShowEdit] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleCloseEdit = () => setShowEdit(false);
+  const handleShowEdit = () => setShowEdit(true);
+  const classes = useStyles();
+
+
+
+
+
 
   if (!token) {
     return <Redirect to="/" />;
@@ -40,12 +56,84 @@ function GetProfile() {
           <div className="card-header__bg"></div>
           <img src={profile.image} className="card-header__img" />
           <div className="card-process">
-            <button href="#" className="process__item">
+            {/* button of Edit profile*/}
+            <button className="process__item" onClick={() => handleShowEdit()}>
               <div className="process-icon follow">
                 <i className="far fa-edit"></i>
               </div>
               <span className="process-txt">Edit</span>
             </button>
+            <Modal show={showEdit} onHide={handleCloseEdit} centered>
+              <Modal.Header closeButton>
+                <Modal.Title>Update profile</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Change your picture:
+              <input
+              accept="image/*"
+              className={classes.input}
+              id="icon-button-file"
+              type="file"
+             
+              onChange={(event) => {
+                const file = event.target.files[0];
+
+                setImage(file);
+              }}
+            />
+            <label htmlFor="icon-button-file">
+              <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="span"
+              >
+                <PhotoCamera />
+              </IconButton>
+            </label>
+              <br/>
+                Choose your Country:
+                <Form.Control as="select" className="mb-4">
+                  <option value={"Ariana"}>Ariana</option>
+                  <option value={"Béja"}>Béja</option>
+                  <option value={"Bizerte"}>Bizerte</option>
+                  <option value={"Gabès"}>Gabès</option>
+                  <option value={"Gafsa"}>Gafsa</option>
+                  <option value={"Jendouba"}>Jendouba</option>
+                  <option value={"Kairouan"}>Kairouan</option>
+                  <option value={"Kasserine"}>Kasserine</option>
+                  <option value={"Kebili"}>Kebili</option>
+                  <option value={"Manouba"}>Manouba</option>
+                  <option value={"Medenine"}>Medenine</option>
+                  <option value={"Monastir"}>Monastir</option>
+                  <option value={"Nabeul"}>Nabeul</option>
+                  <option value={"Sfax"}>Sfax</option>
+                  <option value={"Sidi Bouzid"}>Sidi Bouzid</option>
+                  <option value={"Siliana"}>Siliana</option>
+                  <option value={"Sousse"}>Sousse</option>
+                  <option value={"Tataouine"}>Tataouine</option>
+                  <option value={"Tozeur"}>Tozeur</option>
+                  <option value={"Tunis"}>Tunis</option>
+                  <option value={"Zaghouan"}>Zaghouan</option>
+                </Form.Control>
+                Adresse:
+                <Form.Control
+                  type="text"
+                  className="mb-4"
+                  placeholder="Normal text"
+                />
+                Farmer Domaine :
+                <Form.Control type="text" placeholder="Normal text" />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseEdit}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleCloseEdit}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
+            {/* button of delete profile */}
             <button
               onClick={() => {
                 handleShow();
@@ -84,6 +172,7 @@ function GetProfile() {
               </Modal.Footer>
             </Modal>
           </div>
+          {/* info of user */}
           <div className="card-header__text">
             <span className="card-header__name">{user.name}</span>
             <span className="card-header__job">Phone:{user.phoneNumber}</span>
