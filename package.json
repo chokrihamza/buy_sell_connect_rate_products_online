@@ -1,0 +1,20 @@
+{
+  "name": "passport-ws",
+  "version": "1.0.0",
+  "description": "mern app using passport auth",
+  "main": "server.js",
+  "dependencies": {
+    "@material-ui/icons": "^4.11.2",
+    "bootstrap": "^4.5.3",
+    "concurrently": "^5.3.0",
+    "react-bootstrap": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "server": "cd backend && npm run dev",
+    "client": "cd client && npm start",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "author": "chokri hamza",
+  "license": "ISC"
+}
