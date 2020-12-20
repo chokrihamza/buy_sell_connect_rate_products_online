@@ -8,6 +8,9 @@ import {
   EMPTY_PROFILE,
   DELETE_PROFILE_SUCCESS,
   DELETE_PROFILE_FAIL,
+  EDIT_PROFILE,
+  EDIT_PROFILE_SUCCESS,
+  EDIT_PROFILE_FAIL,
 } from "../constants/action-types.js";
 import axios from "axios";
 import { EmptyUser } from "./actionUser.js";
@@ -32,7 +35,26 @@ export const postProfile = (user) => async (dispatsh) => {
     });
   }
 };
+// update profile
+export const editProfile = (user) => async (dispatsh) => {
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+  };
+  dispatsh({ type: EDIT_PROFILE });
+  try {
+    const result = await axios.post("/profile", user, config);
 
+    dispatsh({ type: EDIT_PROFILE_SUCCESS, payload: result.data });
+  } catch (error) {
+    dispatsh({
+      type: EDIT_PROFILE_FAIL,
+      payload: error.response.data,
+    });
+  }
+};
 // get owner profile
 
 export const getOwnerProfile = () => async (dispatsh) => {
