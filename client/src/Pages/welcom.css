@@ -1,9 +1,4 @@
-.design-postProfile {
-    display: flex;
-    justify-content: center;
-    margin-top: 6%;
-}
-.design-privAnnounce {
+.design-pubAnnounce {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;

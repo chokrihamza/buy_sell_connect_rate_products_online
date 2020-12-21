@@ -57,7 +57,7 @@ if (!token) {
       />
     );
   } else {
-    return (
+    return (<div className="position-profil">
       <div className="card-item">
         <div className="card-header">
           <div className="card-header__bg"></div>
@@ -217,6 +217,7 @@ if (!token) {
           </li>
         </ul>
         <i className="card-header__icon">CreatedAt:{profile.updatedAt}</i>
+      </div>
       </div>
     );
   }

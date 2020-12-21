@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import userReducer from "./userReducer";
 import profileReducer from "./profileReducer";
-import toggleReducer from "./toggleReducer";
+
+import announceReducer from "./announceReducer";
 export const rootReducers =combineReducers({
   userReducer,
-  profileReducer,
-  toggleReducer
+  announceReducer,
+  profileReducer
+  
 });

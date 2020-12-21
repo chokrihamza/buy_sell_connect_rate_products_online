@@ -5,7 +5,7 @@ import './App.css';
 import Signup from './Pages/Signup';
 import Signin from './Pages/Signin';
 import Dashboard from './Pages/Dashboard';
-import Sidebare from './Components/Layout/Sidebar';
+
 import Profile from './Pages/Profile';
 import Welcom from './Pages/Welcom';
 import Announce from './Pages/Announce';
