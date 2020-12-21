@@ -35,7 +35,7 @@ const NavbarPage = () => {
   const profile = useSelector((state) => state.profileReducer.profile);
 
   return (
-    <MDBNavbar dark expand="md" style={{ backgroundColor: "#32325d" }}>
+    <MDBNavbar dark expand="md"  className="design-navbar" >
       <MDBNavbarBrand>
         <strong className="white-text">DASHBOARD</strong>
       </MDBNavbarBrand>
@@ -47,7 +47,12 @@ const NavbarPage = () => {
               <i className="fas fa-sign-in-alt"></i>
               SignIn
             </MDBNavLink>
-          </MDBNavItem>: <h1>autre acces</h1>}
+          </MDBNavItem>: <MDBNavItem>
+            <MDBNavLink className="waves-effect waves-light" to="/Dashboard">
+            <i class="fas fa-home"></i>
+              Dashboard
+            </MDBNavLink>
+          </MDBNavItem>}
         {!profile ?  <MDBNavItem>
             <MDBNavLink className="waves-effect waves-light" to="/register">
               <i className="fas fa-user-plus"></i>

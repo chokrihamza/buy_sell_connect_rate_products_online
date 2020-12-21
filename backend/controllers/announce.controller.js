@@ -69,7 +69,9 @@ exports.getAllannounces = async (req, res) => {
 exports.getAllannouncespublic = async (req, res) => {
     try {
         const announces = await Announce.find().sort({ date: -1 }).select('-likes -comments');
-        res.json(announces);
+         console.log(announces)
+         res.json(announces);
+       
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

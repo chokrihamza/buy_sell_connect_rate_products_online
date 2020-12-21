@@ -4,7 +4,7 @@ import { UncontrolledAlert } from 'reactstrap';
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../js/actions/actionUser";
 import { Redirect } from "react-router-dom";
-import { toggleTrue } from "../js/actions/actionToggle";
+
 const Signup = () => {
   const loadUser = useSelector((state) => state.userReducer.loadUser);
   const user = useSelector((state) => state.userReducer.user);
