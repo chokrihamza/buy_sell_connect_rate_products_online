@@ -1,5 +1,13 @@
 /***Third step */
 require('./config/dbConnect')();
+//Admin bro const
+const User = require('./models/User');
+const Announce = require('./models/Announce');
+const Profile = require('./models/Profile');
+const AdminBro = require('admin-bro');
+const AdminBroMongoose = require('@admin-bro/mongoose');
+const AdminBroExpress = require('@admin-bro/express');
+
 
 /***End of Third step */
 //@ etape 1
@@ -24,6 +32,17 @@ app.use('/profile', require('./Routes/profile'));
 
 //create Announce routes
 app.use('/announce', require('./Routes/announce'));
+
+//using admin bro 
+AdminBro.registerAdapter(AdminBroMongoose);
+const AdminBroOptions = {
+      resources: [User, Profile, Announce],
+      rootPath: '/admin',
+}
+
+const adminBro = new AdminBro(AdminBroOptions);
+const router=AdminBroExpress.buildRouter(adminBro)
+app.use(adminBro.options.rootPath, router);
 
 
 app.listen(PORT, (err) => {
