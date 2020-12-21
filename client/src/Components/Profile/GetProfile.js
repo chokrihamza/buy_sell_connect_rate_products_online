@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { EmptyUser } from "../../js/actions/actionUser";
-import { EmptyProfile } from "../../js/actions/actionprofile";
+import { editProfile, EmptyProfile } from "../../js/actions/actionprofile";
 import "./GetProfile.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Redirect, useHistory } from "react-router-dom";
@@ -16,9 +16,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function GetProfile() {
+// state to update profile
+const [location, setLocation] = useState();
+const [adresse, setAdresse] = useState();
+const [farmerDomaine, setFarmerDomaine] = useState();
+const [image, setImage] = useState();
+const data = new FormData();
+  data.append("location", location);
+  data.append("adresse", adresse);
+  data.append("farmerDomaine", farmerDomaine);
+  data.append("image", image);
+
+
+
   const dispatch = useDispatch();
-  const [image, setImage] = useState()
-  const user = useSelector((state) => state.profileReducer.profile.user);
+ 
+  const user = useSelector((state) => state.userReducer.user);
   const profile = useSelector((state) => state.profileReducer.profile);
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);
   const token = localStorage.getItem("token");
@@ -30,13 +43,7 @@ function GetProfile() {
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = () => setShowEdit(true);
   const classes = useStyles();
-
-
-
-
-
-
-  if (!token) {
+if (!token) {
     return <Redirect to="/" />;
   } else if (loadProfile) {
     return (
@@ -92,7 +99,9 @@ function GetProfile() {
             </label>
               <br/>
                 Choose your Country:
-                <Form.Control as="select" className="mb-4">
+                <Form.Control as="select" className="mb-4"
+                  onChange={(e)=>setLocation(e.target.value)}   
+                >
                   <option value={"Ariana"}>Ariana</option>
                   <option value={"Béja"}>Béja</option>
                   <option value={"Bizerte"}>Bizerte</option>
@@ -117,18 +126,26 @@ function GetProfile() {
                 </Form.Control>
                 Adresse:
                 <Form.Control
+                  onChange={(e)=>setAdresse(e.target.value)} 
                   type="text"
                   className="mb-4"
                   placeholder="Normal text"
                 />
                 Farmer Domaine :
-                <Form.Control type="text" placeholder="Normal text" />
+                <Form.Control type="text" placeholder="Normal text" 
+                onChange={(e)=>setFarmerDomaine(e.target.value)} 
+                
+                />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseEdit}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleCloseEdit}>
+                <Button variant="primary" onClick={() => {
+                    dispatch(editProfile(data));
+                     handleCloseEdit();
+                     
+                }}>
                   Save Changes
                 </Button>
               </Modal.Footer>
