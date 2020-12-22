@@ -56,7 +56,7 @@ exports.postAnnounce = async (req, res) => {
 // @access   Private
 exports.getAllannounces = async (req, res) => {
     try {
-        const announces = await Announce.find().sort({ date: -1 });
+        const announces = await Announce.find().sort({ date: -1 }).populate("user");
         res.json(announces);
     } catch (err) {
         console.error(err.message);

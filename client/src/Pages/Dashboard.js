@@ -11,7 +11,7 @@ import "./Dashboard.css";
 import NavbarPage from "../Components/Layout/Navbar";
 import { getPrivateAnnounce } from "../js/actions/actionAnnouce";
 import PrivateAnnounce from "../Components/Announce/PrivateAnnounce";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 const Dashboard = () => {
   const profile = useSelector((state) => state.profileReducer.profile);
   const user = useSelector((state) => state.userReducer.user);
@@ -59,7 +59,7 @@ const Dashboard = () => {
             <PostProfile />
           </div>
         ) :(loadAnnounce)? (
-          <h1>loading</h1>
+          <CircularProgress disableShrink />
         ):(announce.map((el,i)=><PrivateAnnounce announce={el} key={i}/>))}
         </div>
       </div>

@@ -208,7 +208,7 @@ if (!token) {
           <li className="card-detail__li">
             <p className="card-detail__txt">Farmer Domaine:</p>
             <ul>
-              {profile.farmerDomaine.map((e, i) => (
+              {profile&&profile.farmerDomaine.map((e, i) => (
                 <li key={i} className="card-detail__str1" colSpan="2">
                   {e}
                 </li>

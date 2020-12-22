@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import PublicAnnounce from "../Components/Announce/PublicAnnounce";
 import NavbarPage from "../Components/Layout/Navbar";
 import { getPublicAnnounce } from "../js/actions/actionAnnouce";
-import "./welcom.css"
+import "./welcom.css";
+import CircularProgress from '@material-ui/core/CircularProgress';
 const Welcom = () => {
   const dispatch = useDispatch();
   const pubAnnounce = useSelector((state) => state.announceReducer.announce);
@@ -20,7 +21,7 @@ console.log(pubAnnounce)
   <>
   <NavbarPage />
     <div className="design-pubAnnounce">
-{loadAnnounce ?<h1>loading</h1>:pubAnnounce.map((el,i)=>
+{loadAnnounce ?<CircularProgress disableShrink />:pubAnnounce&&pubAnnounce.map((el,i)=>
       <PublicAnnounce announce={el} key={i}/>)}
     </div>
     </>
