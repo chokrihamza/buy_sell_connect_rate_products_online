@@ -15,6 +15,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,48 +42,62 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PrivateAnnounce() {
+function PrivateAnnounce({ announce }) {
+  const { productCategory,
+    Description,
+    productName,
+    quantity,
+    price,
+    productImages,
+    updatedAt,
+    user,
+    userImage
+  } = announce
+  const { name,
+    email,
+    phoneNumber
+  } = user;
+  console.log(name, email, phoneNumber)
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+//Selectors
+  
+
   return (
     <div>
       <Card className={classes.root}>
         <CardHeader
           avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              R
-            </Avatar>
+            <Avatar alt="Travis Howard" src={userImage} />
           }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
+          
+          title={productName}
+          subheader={updatedAt}
         />
         <CardMedia
-          className={classes.media}
-          image="/static/images/cards/paella.jpg"
-          title="Paella dish"
-        />
+            component="img"
+            alt="productImage"
+            height="140"
+            image={productImages[0]}
+            title="productImage"
+          />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            Price:{quantity}<br/>
+            Price:{price}<br/>
+            Description:{Description}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
+          <IconButton aria-label="add a comment">
+          <i class="far fa-comment-dots"></i>
           </IconButton>
           <IconButton
             className={clsx(classes.expand, {
@@ -97,11 +112,11 @@ function PrivateAnnounce() {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Method:</Typography>
+            <Typography paragraph>Contact:</Typography>
             <Typography paragraph>
-              Heat 1/2 cup of the broth in a pot until simmering, add saffron
-              and set aside for 10 minutes.
-            </Typography>
+              Phone:{phoneNumber}<br/>
+              email:{email}
+              </Typography>
           </CardContent>
         </Collapse>
       </Card>
