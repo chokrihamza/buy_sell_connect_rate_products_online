@@ -35,7 +35,7 @@ function PublicAnnounce({ announce }) {
             component="img"
             alt="productImage"
             height="140"
-            image={productImages}
+            image={productImages[0]}
             title="productImage"
           />
           <CardContent>

@@ -53,17 +53,24 @@ const Dashboard = () => {
             Welcome {user.name} we are happy to see you
           </div>
         </FlashMessage>
-        <div className="design-privAnnounce">
+        
         {!profile ? (
           <div className="design-postProfile">
             <PostProfile />
           </div>
-        ) :(loadAnnounce)? (
+        ) : (loadAnnounce) ? (
           <CircularProgress disableShrink />
-        ):(announce.map((el,i)=><PrivateAnnounce announce={el} key={i}/>))}
-        </div>
-      </div>
-    );
+        ) : (
+              <div className="design-privAnnounce">
+                {
+                  announce.map((el, i) =>
+                    <PrivateAnnounce announce={el} key={i} />)}
+              </div>
+     
+            )
+        
+        }
+      </div>)
   }
 };
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -11,7 +11,6 @@ import {
   MDBDropdownToggle,
   MDBDropdownMenu,
   MDBDropdownItem,
-  MDBContainer,
   MDBIcon,
 } from "mdbreact";
 import { Link } from "react-router-dom";
@@ -70,7 +69,7 @@ const NavbarPage = () => {
                 <MDBDropdownMenu className="dropdown-default" right>
                   <MDBDropdownItem>
                     <Link
-                      to="profile"
+                      to="/profile"
                       onClick={() => {
                         dispatch(getOwnerProfile());
                       }}
