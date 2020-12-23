@@ -1,17 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import NavebarePage from '../Components/Layout/Navbar'
-const Announce = () => {
+import AnnounceDetails from '../Components/AnnoubceDetails/AnnounceDetails';
+import NavebarePage from '../Components/Layout/Navbar';
+
+const Announce = (props) => {
       const token = localStorage.getItem("token");
-  
+      const id = props.match.params.id
+     
+
       if (!token) {
             return <Redirect to="/" />
       } else {
             return (
                   <div>
                         <NavebarePage />
-                       ghfghfg
+                        <AnnounceDetails id={id}/>
+                        
                   </div>
             )
       }

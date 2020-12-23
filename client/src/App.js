@@ -22,7 +22,7 @@ function App() {
         <Route path='/register' component={Signup} />
         <Route path='/login' component={Signin} />
         <Route path='/profile' component={Profile} />
-        <Route path='/announce' component={Announce}/>
+        <Route path='/announce/:id' component={Announce}/>
         
       </Switch>
     </BrowserRouter>

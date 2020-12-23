@@ -69,7 +69,7 @@ exports.getAllannounces = async (req, res) => {
 exports.getAllannouncespublic = async (req, res) => {
     try {
         const announces = await Announce.find().sort({ date: -1 }).select('-likes -comments');
-         console.log(announces)
+         
          res.json(announces);
        
     } catch (err) {
@@ -77,16 +77,31 @@ exports.getAllannouncespublic = async (req, res) => {
         res.status(500).send('Server Error');
     }
 }
+// get owner announce
+// @route    GET /announce/owner
+// @desc     Get announce 
+// @access   Private
+exports.getOwnerAnnounce=async (req,res)=>{
+try {
+const announce=await Announce.find({user:req.user.id}).populate("user");
+   return  res.status(200).json(announce);
+} catch (e) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+        return res.status(404).json({ msg: "Announce not found" });
 
+    }
 
-
+    res.status(500).send('Server Error');
+}
+}
 
 // @route    GET /announce/:id
 // @desc     Get announce by ID
 // @access   Private
 exports.getAnnounceById = async (req, res) => {
     try {
-        const announce = await Announce.findById(req.params.id);
+        const announce = await Announce.findById(req.params.id).populate("user");
 
         if (!announce) {
             return res.status(404).json({ msg: 'Announce not found' })
@@ -158,6 +173,8 @@ exports.likeunlikeAnnounceById = async (req, res) => {
 
     }
 }
+
+
 /*
 //@route PUT /announce/unlike/:id
 //@desc unlike an announce

@@ -8,7 +8,8 @@ const { postAnnounce,
       likeunlikeAnnounceById,
       commentAnnounceById,
       deleteCommentByAnnounceId,
-      getAllannouncespublic
+      getAllannouncespublic,
+      getOwnerAnnounce
 
 } = require('../controllers/announce.controller');
 const { AnnounceRules } = require('../middleware/validatorAnnounce');
@@ -28,10 +29,21 @@ router.post('/', isAuth(), upload.array('imagesProduct', 10), AnnounceRules(), v
 // @access   Private
 router.get('/', isAuth(), getAllannounces);
 
+// get owner announce
+// @route    GET /announce/owner
+// @desc     Get announce by ID
+// @access   Private
+router.get('/owner', isAuth(), getOwnerAnnounce);
+
 // @route    GET /announce/:id
 // @desc     Get announce by ID
 // @access   Private
 router.get('/:id', isAuth(), getAnnounceById);
+
+
+
+
+
 
 // @route    DELETE /announce/:id
 // @desc     Delete an announce
@@ -49,5 +61,6 @@ router.post('/comment/:id', isAuth(), CommentAnnounceRules(), validator, comment
 //@route DELETE announce/comment/:id/:comment_id'
 //@desc Comment an announce 
 //@access Private 
-router.delete('/comment/:id/:comment_id', isAuth(), deleteCommentByAnnounceId)
+router.delete('/comment/:id/:comment_id', isAuth(), deleteCommentByAnnounceId);
+
 module.exports = router;

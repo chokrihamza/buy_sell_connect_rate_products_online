@@ -12,10 +12,9 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { useSelector } from "react-redux";
+import { Link, useHistory } from 'react-router-dom';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,11 +50,13 @@ function PrivateAnnounce({ announce }) {
     productImages,
     updatedAt,
     user,
-    userImage
+    userImage,
+    _id
   } = announce
   const { name,
     email,
-    phoneNumber
+    phoneNumber,
+   
   } = user;
   console.log(name, email, phoneNumber)
   const classes = useStyles();
@@ -64,12 +65,15 @@ function PrivateAnnounce({ announce }) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-//Selectors
-  
+//usehistory
+const history = useHistory();
 
   return (
     <div>
       <Card className={classes.root}>
+      
+      <CardActionArea onClick={()=>history.push(`/announce/${_id}`)}>
+      
         <CardHeader
           avatar={
             <Avatar alt="Travis Howard" src={userImage} />
@@ -91,7 +95,8 @@ function PrivateAnnounce({ announce }) {
             Price:{price}<br/>
             Description:{Description}
           </Typography>
-        </CardContent>
+          </CardContent>
+          </CardActionArea>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
@@ -109,7 +114,9 @@ function PrivateAnnounce({ announce }) {
           >
             <ExpandMoreIcon />
           </IconButton>
-        </CardActions>
+            </CardActions>
+           
+         
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Contact:</Typography>
@@ -118,8 +125,11 @@ function PrivateAnnounce({ announce }) {
               email:{email}
               </Typography>
           </CardContent>
-        </Collapse>
+          </Collapse>
+        
       </Card>
+          
+        
     </div>
   );
 }
