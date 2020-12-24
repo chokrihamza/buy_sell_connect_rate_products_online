@@ -10,21 +10,23 @@ import {
   GET_PRIVATEUSER_ANNOUCE_FAIL,
   GET_ANNOUCE_BYID,
   GET_ANNOUCE_BYID_SUCCESS,
-  GET_ANNOUCE_BYID_FAIL
-
+  GET_ANNOUCE_BYID_FAIL,
+  POST_ANNOUNCE,
+  POST_ANNOUNCE_SUCCESS,
+  POST_ANNOUNCE_FAIL,
 } from "../constants/actionTypesAnnouce";
 
 // initialState
 const initialState = {
-  
   loadAnnounce: false,
   announce: null,
   errors: null,
   loadAnnounceid: false,
   announceid: "",
-  errorsid:"",
-  
-
+  errorsid: "",
+  loadPostAnnounce: false,
+  postAnnounce: null,
+  postErrors: null,
 };
 
 // reducer
@@ -53,9 +55,16 @@ const announceReducer = (state = initialState, { type, payload }) => {
     case GET_ANNOUCE_BYID:
       return { ...state, loadAnnounceid: true };
     case GET_ANNOUCE_BYID_SUCCESS:
-      return { ...state, announceid: payload,loadAnnounceid: false };
+      return { ...state, announceid: payload, loadAnnounceid: false };
     case GET_ANNOUCE_BYID_FAIL:
-      return { ...state, errorsid: payload,loadAnnounceid: false };
+      return { ...state, errorsid: payload, loadAnnounceid: false };
+    // post private announce
+    case POST_ANNOUNCE:
+      return { ...state, loadPostAnnounce: true };
+    case POST_ANNOUNCE_SUCCESS:
+      return { ...state, loadPostAnnounce: false, postAnnounce: payload };
+    case POST_ANNOUNCE_FAIL:
+      return { ...state, loadPostAnnounce: false, postErrors: payload };
     default:
       return state;
   }

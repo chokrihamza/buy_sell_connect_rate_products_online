@@ -1,0 +1,21 @@
+.design-PostAnnounce {
+    color:white;
+    margin-top: 8%;
+    background-color: rgb(9, 1, 44);
+    padding: 4%;
+    border-radius: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.design-bottomPost {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.design-description {
+  
+    width: 45%;
+}
+.design-textarea {
+    width: 100%;
+}

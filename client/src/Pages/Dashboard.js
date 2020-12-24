@@ -7,6 +7,7 @@ import PostProfile from "../Components/Profile/PostProfile";
 import { getOwnerProfile } from "../js/actions/actionprofile";
 import { Spinner } from "reactstrap";
 import FlashMessage from "react-flash-message";
+import Alert from '@material-ui/lab/Alert';
 import "./Dashboard.css";
 import NavbarPage from "../Components/Layout/Navbar";
 import { getPrivateAnnounce } from "../js/actions/actionAnnouce";
@@ -49,9 +50,14 @@ const Dashboard = () => {
       <div>
         <NavbarPage />
         <FlashMessage duration={2000}>
-          <div className="alert alert-info" role="alert">
+        <Alert variant="outlined" severity="success"
+        style={{
+          position: "fixed",
+          bottom: "2%",
+          right: "0%",
+        }}>
             Welcome {user.name} we are happy to see you
-          </div>
+          </Alert>
         </FlashMessage>
         
         {!profile ? (

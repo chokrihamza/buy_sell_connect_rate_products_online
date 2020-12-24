@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard';
 import Profile from './Pages/Profile';
 import Welcom from './Pages/Welcom';
 import Announce from './Pages/Announce';
+import CreateAnnounce from "./Pages/CreateAnnounce";
 
 
 
@@ -23,7 +24,7 @@ function App() {
         <Route path='/login' component={Signin} />
         <Route path='/profile' component={Profile} />
         <Route path='/announce/:id' component={Announce}/>
-        
+        <Route path='/postAnnounce' component={CreateAnnounce}/>
       </Switch>
     </BrowserRouter>
 
