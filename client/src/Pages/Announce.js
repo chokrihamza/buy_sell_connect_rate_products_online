@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom';
-import AnnounceDetails from '../Components/AnnoubceDetails/AnnounceDetails';
+import AnnounceDetails from '../Components/AnnounceDetails/AnnounceDetails';
 import NavebarePage from '../Components/Layout/Navbar';
 
 const Announce = (props) => {

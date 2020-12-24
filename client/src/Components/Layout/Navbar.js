@@ -57,7 +57,12 @@ const NavbarPage = () => {
               <i className="fas fa-user-plus"></i>
               SignUp
             </MDBNavLink>
-          </MDBNavItem>:<h1>autre access</h1> }
+          </MDBNavItem>:<MDBNavItem>
+            <MDBNavLink className="waves-effect waves-light" to="/postAnnounce">
+            <i className="fas fa-scroll"></i>
+              Create Announce
+            </MDBNavLink>
+          </MDBNavItem> }
 
           {profile ? (
             <MDBNavItem>
