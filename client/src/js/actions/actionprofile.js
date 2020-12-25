@@ -13,7 +13,7 @@ import {
   EDIT_PROFILE_FAIL,
 } from "../constants/action-types.js";
 import axios from "axios";
-import { EmptyUser } from "./actionUser.js";
+
 
 // post profile
 export const postProfile = (user) => async (dispatsh) => {

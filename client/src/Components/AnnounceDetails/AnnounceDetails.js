@@ -24,7 +24,7 @@ const { productCategory,
     productImages,
     updatedAt,
     user,
-    userImage,
+
    
   } = announceid
   

@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import "./PostAnnounce.css";
 import { postAnnounce } from "../../js/actions/actionAnnouce";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   input: {
     display: "none",
@@ -17,33 +18,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const PostAnnounces = () => {
+  const history=useHistory()
   const dispatch = useDispatch();
   const classes = useStyles();
-   const [productImages, setProductImages] = useState();
+  const [productImages, setProductImages] = useState();
   const [productName, setProductName] = useState();
   const [productCategory, setProductCategory] = useState();
   const [quantity, setQuantity] = useState();
   const [price, setPrice] = useState();
   const [Description, setDescription] = useState();
- 
 
- 
   const handlSubmit = () => {
     const data = new FormData();
     for (const i of Object.keys(productImages)) {
-    
-      data.append("imagesProduct",productImages[i])
+      data.append("imagesProduct", productImages[i]);
     }
     data.append("productName", productName);
-  data.append("productCategory", productCategory);
-  data.append("quantity", quantity);
-  data.append("price", price);
-  data.append("Description", Description);
+    data.append("productCategory", productCategory);
+    data.append("quantity", quantity);
+    data.append("price", price);
+    data.append("Description", Description);
 
-    dispatch(postAnnounce(data))
-   }
-    
-return (
+    dispatch(postAnnounce(data));
+  };
+
+  return (
     <div className="design-PostAnnounce">
       <div
         className="file-upload"
@@ -53,15 +52,13 @@ return (
           justifyContent: "center",
         }}
       >
-        
         <input
           accept="image/*"
           className={classes.input}
           id="icon-button-file"
           type="file"
           multiple
-          onChange={(e)=>setProductImages(e.target.files)}
-         
+          onChange={(e) => setProductImages(e.target.files)}
         />
         <label htmlFor="icon-button-file">
           <IconButton
@@ -144,7 +141,7 @@ return (
         startIcon={<CloudUploadIcon />}
         type="submit"
         style={{ marginLeft: "43.5%" }}
-        onClick={handlSubmit}
+        onClick={()=>{handlSubmit();history.push("/profile")}}
       >
         Upload
       </Button>

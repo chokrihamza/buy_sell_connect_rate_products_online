@@ -61,7 +61,7 @@ if (!token) {
       <div className="card-item">
         <div className="card-header">
           <div className="card-header__bg"></div>
-          <img src={profile.image} className="card-header__img" />
+          <img src={profile.image} className="card-header__img" alt="user"/>
           <div className="card-process">
             {/* button of Edit profile*/}
             <button className="process__item" onClick={() => handleShowEdit()}>
