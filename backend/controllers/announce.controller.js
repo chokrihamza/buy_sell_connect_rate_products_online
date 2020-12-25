@@ -9,6 +9,7 @@ const Profile = require('../models/Profile');
 
 exports.postAnnounce = async (req, res) => {
     const newAnnounce = {};
+    console.log(req.files)
     let images = [];
     let countImages = 0;
     for (const { path } of req.files) {
@@ -16,7 +17,7 @@ exports.postAnnounce = async (req, res) => {
         countImages++;
     }
     newAnnounce.productImages = images;
-
+    console.log(images)
     const {
         productName,
         productCategory,
@@ -39,9 +40,9 @@ exports.postAnnounce = async (req, res) => {
         newAnnounce.userImage = profile.image;
         const user = await User.findById(req.user.id).select('-password');
         newAnnounce.userName = user.name;
-        const resAnnounce = await new Announce(newAnnounce);
-        await resAnnounce.save();
-        return res.status(200).json({ resAnnounce, msg: "added successfully" })
+        const resAnnounce =  new Announce(newAnnounce);
+        const result= await resAnnounce.save();
+        return res.status(200).json({response:result, msg: "added successfully" });
 
     } catch (err) {
         console.error(err.message);

@@ -23,7 +23,7 @@ router.get('/pubannounce', getAllannouncespublic);
 // @route    POST /announce
 // @desc     Create an announce
 // @access   Private
-router.post('/', isAuth(), upload.array('imagesProduct', 10), AnnounceRules(), validator, postAnnounce);
+router.post('/', isAuth(), upload.array('imagesProduct', 10), postAnnounce);
 // @route    GET /announce
 // @desc     Get all Announces
 // @access   Private
