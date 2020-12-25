@@ -17,29 +17,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const PostAnnounces = () => {
+  const dispatch = useDispatch();
   const classes = useStyles();
-  const [productImages, setProductImages] = useState();
+   const [productImages, setProductImages] = useState();
   const [productName, setProductName] = useState();
   const [productCategory, setProductCategory] = useState();
   const [quantity, setQuantity] = useState();
   const [price, setPrice] = useState();
   const [Description, setDescription] = useState();
+ 
 
-  
-  const data = new FormData();
-data.append("imagesProduct",productImages)
-
-  data.append("productName", productName);
+ 
+  const handlSubmit = () => {
+    const data = new FormData();
+    for (const i of Object.keys(productImages)) {
+    
+      data.append("imagesProduct",productImages[i])
+    }
+    data.append("productName", productName);
   data.append("productCategory", productCategory);
   data.append("quantity", quantity);
   data.append("price", price);
   data.append("Description", Description);
 
- 
-  const dispatch = useDispatch();
-  console.log(productImages)
-
-  return (
+    dispatch(postAnnounce(data))
+   }
+    
+return (
     <div className="design-PostAnnounce">
       <div
         className="file-upload"
@@ -49,17 +53,15 @@ data.append("imagesProduct",productImages)
           justifyContent: "center",
         }}
       >
+        
         <input
           accept="image/*"
           className={classes.input}
           id="icon-button-file"
           type="file"
           multiple
-          onChange={(event) => {
-            const file = event.target.files[1];
-           
-            setProductImages(file)
-          }}
+          onChange={(e)=>setProductImages(e.target.files)}
+         
         />
         <label htmlFor="icon-button-file">
           <IconButton
@@ -140,8 +142,9 @@ data.append("imagesProduct",productImages)
         color="primary"
         className={classes.button}
         startIcon={<CloudUploadIcon />}
+        type="submit"
         style={{ marginLeft: "43.5%" }}
-        onClick={() => dispatch(postAnnounce(data))}
+        onClick={handlSubmit}
       >
         Upload
       </Button>
