@@ -59,7 +59,7 @@ const PostProfile = () => {
     setOpen(true);
   };
   const userName = useSelector(state => state.userReducer.user.name);
-  const profile = useSelector((state) => state.profileReducer.profile);
+  
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);
   const errors = useSelector((state) => state.profileReducer.errors);
   return (
@@ -103,7 +103,7 @@ const PostProfile = () => {
         <div className="design-input-image">
           <div className="form-icon">
             {image ? (
-              <img src={URL.createObjectURL(image)} className="form-icon" />
+              <img src={URL.createObjectURL(image)} className="form-icon" alt="profile" />
             ) : (
               <span>
                 <i className="icon icon-user" />

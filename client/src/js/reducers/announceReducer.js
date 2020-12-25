@@ -14,6 +14,8 @@ import {
   POST_ANNOUNCE,
   POST_ANNOUNCE_SUCCESS,
   POST_ANNOUNCE_FAIL,
+  DELETE_ANNOUNCE_FAIL,
+  DELETE_ANNOUNCE_SUCCESS,
 } from "../constants/actionTypesAnnouce";
 
 // initialState
@@ -27,6 +29,8 @@ const initialState = {
   loadPostAnnounce: false,
   postAnnounce: null,
   postErrors: null,
+  deleteResponse: null,
+  deleteErrors: null,
 };
 
 // reducer
@@ -65,6 +69,11 @@ const announceReducer = (state = initialState, { type, payload }) => {
       return { ...state, loadPostAnnounce: false, postAnnounce: payload };
     case POST_ANNOUNCE_FAIL:
       return { ...state, loadPostAnnounce: false, postErrors: payload };
+    // delete owner announce
+    case DELETE_ANNOUNCE_SUCCESS:
+      return { ...state, deleteResponse: payload };
+    case DELETE_ANNOUNCE_FAIL:
+      return { ...state, deleteErrors: payload };
     default:
       return state;
   }

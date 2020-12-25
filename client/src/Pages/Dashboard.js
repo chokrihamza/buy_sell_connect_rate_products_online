@@ -23,12 +23,12 @@ const Dashboard = () => {
   const loadAnnounce = useSelector(
     (state) => state.announceReducer.loadAnnounce
   );
-  const errors = useSelector((state) => state.announceReducer.errors);
+  
   useEffect(() => {
     dispatch(getOwnerProfile());
     dispatch(getUser());
     dispatch(getPrivateAnnounce());
-  }, []);
+  },[]);
   if (loadProfile && loadUser) {
     return (
       <>

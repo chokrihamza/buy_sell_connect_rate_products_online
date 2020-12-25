@@ -13,8 +13,10 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Link, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import { deleteAnnounce } from "../../js/actions/actionAnnouce";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PrivateAnnounce({ announce }) {
-  const { productCategory,
+  const { 
     Description,
     productName,
     quantity,
@@ -53,12 +55,13 @@ function PrivateAnnounce({ announce }) {
     userImage,
     _id
   } = announce
-  const { name,
+  const { 
     email,
     phoneNumber,
-   
   } = user;
-  console.log(name, email, phoneNumber)
+  const personid = useSelector(state => state.userReducer.user._id)
+  console.log(personid)
+ const dispatch = useDispatch()
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -104,6 +107,9 @@ const history = useHistory();
           <IconButton aria-label="add a comment">
           <i class="far fa-comment-dots"></i>
           </IconButton>
+          {(user._id===personid)?<IconButton aria-label="delete announce" onClick={()=>dispatch(deleteAnnounce(_id))}>
+          <i class="fas fa-recycle"></i>
+          </IconButton>:null}
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
@@ -114,6 +120,7 @@ const history = useHistory();
           >
             <ExpandMoreIcon />
           </IconButton>
+          
             </CardActions>
            
          
