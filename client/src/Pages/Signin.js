@@ -3,8 +3,10 @@ import { Redirect } from "react-router-dom";
 import FlashMessage from "react-flash-message";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../js/actions/actionUser";
-
 import { UncontrolledAlert } from 'reactstrap';
+import AuthGoogle from "../Components/Auth/AuthGoogle";
+import FacebookAuth from "../Components/Auth/FacebookAuth";
+import './Signin.css';
 const Signin = () => {
   const dispatch = useDispatch();
   const loadUser = useSelector((state) => state.userReducer.loadUser);
@@ -21,7 +23,7 @@ const Signin = () => {
     );
   };
 
-  return (
+return (
     <div className="row mt-5">
       <div className="col-md-6 m-auto">
         <div className="card card-body">
@@ -73,9 +75,22 @@ const Signin = () => {
             className="btn btn-primary btn-block"
             onClick={loginUser}
           >
-            Login
-          </button>
-
+          Login
+          </button><br />
+              <p className="textchoice"><span id="choice">or</span></p>
+          {/** Add google authentification */}
+       <div class="container">
+           <div class="row">
+           <div class="col-sm">
+              <AuthGoogle />
+           </div>
+           <div class="col-sm">
+           <FacebookAuth />
+        </div>
+        </div>
+       </div>
+        
+          {/** Add google authentification */}
           <p className="lead mt-4">
             No Account? <a href="/register">Register</a>
             Go Home? <a href="/">Home</a><br/>
