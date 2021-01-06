@@ -69,7 +69,7 @@ exports.getAllannounces = async (req, res) => {
 // @access   Public
 exports.getAllannouncespublic = async (req, res) => {
     try {
-        const announces = await Announce.find().sort({ date: -1 }).select('-likes -comments');
+        const announces = await Announce.find().limit(10).sort({ date: -1 }).select('-likes -comments');
          
          res.json(announces);
        

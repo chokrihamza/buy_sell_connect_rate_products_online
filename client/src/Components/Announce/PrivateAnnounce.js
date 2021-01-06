@@ -55,12 +55,9 @@ function PrivateAnnounce({ announce }) {
     userImage,
     _id
   } = announce
-  const { 
-    email,
-    phoneNumber,
-  } = user;
+  
   const personid = useSelector(state => state.userReducer.user._id)
-  console.log(personid)
+ 
  const dispatch = useDispatch()
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -107,7 +104,7 @@ const history = useHistory();
           <IconButton aria-label="add a comment">
           <i class="far fa-comment-dots"></i>
           </IconButton>
-          {(user._id===personid)?<IconButton aria-label="delete announce" onClick={()=>dispatch(deleteAnnounce(_id))}>
+          {(user&&user._id===personid)?<IconButton aria-label="delete announce" onClick={()=>dispatch(deleteAnnounce(_id))}>
           <i class="fas fa-recycle"></i>
           </IconButton>:null}
           <IconButton
@@ -128,8 +125,8 @@ const history = useHistory();
           <CardContent>
             <Typography paragraph>Contact:</Typography>
             <Typography paragraph>
-              Phone:{phoneNumber}<br/>
-              email:{email}
+              Phone:{user&&user.phoneNumber}<br/>
+              email:{user&&user.email}
               </Typography>
           </CardContent>
           </Collapse>

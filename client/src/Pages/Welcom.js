@@ -12,7 +12,7 @@ const Welcom = () => {
     (state) => state.announceReducer.loadAnnounce
   );
   const errors = useSelector((state) => state.announceReducer.errors);
-console.log(pubAnnounce)
+
   useEffect(() => {
     dispatch(getPublicAnnounce());
   }, []);

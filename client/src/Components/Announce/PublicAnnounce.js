@@ -26,10 +26,10 @@ function PublicAnnounce({ announce }) {
     price,
     updatedAt,
   } = announce;
-  console.log(announce);
+  
   return (
-    <div>
-      <Card className={classes.root}>
+    <div class="ribbon-bookmark-v text-vertical" data-position="left bottom">
+      <Card className={classes.root}  >
         <CardActionArea>
           <CardMedia
             component="img"
