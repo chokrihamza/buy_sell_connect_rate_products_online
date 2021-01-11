@@ -16,6 +16,11 @@ import {
   POST_ANNOUNCE_FAIL,
   DELETE_ANNOUNCE_FAIL,
   DELETE_ANNOUNCE_SUCCESS,
+  UPDATE_LIKES,
+  UPDATE_LIKES_FAIL,
+  ADD_COMMENT,
+  REMOVE_COMMENT
+
 } from "../constants/actionTypesAnnouce";
 
 // initialState
@@ -31,6 +36,7 @@ const initialState = {
   postErrors: null,
   deleteResponse: null,
   deleteErrors: null,
+  updatelikefail:null
 };
 
 // reducer
@@ -71,11 +77,35 @@ const announceReducer = (state = initialState, { type, payload }) => {
       return { ...state, loadPostAnnounce: false, postErrors: payload };
     // delete owner announce
     case DELETE_ANNOUNCE_SUCCESS:
-      return { ...state, deleteResponse: payload };
+      return { ...state,announce:state.announce.filter(post=>post._id!==payload),loadAnnounce:false  }; //deleteResponse: payload
     case DELETE_ANNOUNCE_FAIL:
       return { ...state, deleteErrors: payload };
+    
+    case UPDATE_LIKES:
+      return {
+        ...state,
+        announce: state.announce.map(
+          post => post._id === payload.id ? { ...post, likes: payload.likes }
+            : post
+        ), loadAnnounce: false
+      };
+    case UPDATE_LIKES_FAIL:
+      return { ...state, updatelikefail: payload };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        
+        announceid: {...state.announceid, comments: payload} , loadAnnounce: false
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        announceid:{...state.announce,comments:state.announceid.comments.filter(comment=>comment._id!==payload), loadAnnounce: false}
+      }
+
     default:
       return state;
   }
 };
+  
 export default announceReducer;

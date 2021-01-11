@@ -6,8 +6,6 @@ import { useEffect } from "react";
 import PostProfile from "../Components/Profile/PostProfile";
 import { getOwnerProfile } from "../js/actions/actionprofile";
 import { Spinner } from "reactstrap";
-import FlashMessage from "react-flash-message";
-import Alert from '@material-ui/lab/Alert';
 import "./Dashboard.css";
 import NavbarPage from "../Components/Layout/Navbar";
 import { getPrivateAnnounce } from "../js/actions/actionAnnouce";
@@ -20,6 +18,7 @@ const Dashboard = () => {
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);
   const dispatch = useDispatch();
   const announce = useSelector((state) => state.announceReducer.announce);
+  
   const loadAnnounce = useSelector(
     (state) => state.announceReducer.loadAnnounce
   );
@@ -28,7 +27,8 @@ const Dashboard = () => {
     dispatch(getOwnerProfile());
     dispatch(getUser());
     dispatch(getPrivateAnnounce());
-  },[]);
+  }, []);
+  
   if (loadProfile && loadUser) {
     return (
       <>
@@ -49,24 +49,13 @@ const Dashboard = () => {
     return (
       <div>
         <NavbarPage />
-        <FlashMessage duration={2000}>
-        <Alert variant="outlined" severity="success"
-        style={{
-          position: "fixed",
-          bottom: "2%",
-          right: "0%",
-        }}>
-            Welcome {user.name} we are happy to see you
-          </Alert>
-        </FlashMessage>
-        
         {!profile ? (
           <div className="design-postProfile">
             <PostProfile />
           </div>
         ) : (loadAnnounce) ? (
           <CircularProgress disableShrink />
-        ) : (
+          ) : (
               <div className="design-privAnnounce">
                 {
                   announce.map((el, i) =>

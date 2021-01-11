@@ -16,14 +16,18 @@ import {
   POST_ANNOUNCE_SUCCESS,
   POST_ANNOUNCE_FAIL,
   DELETE_ANNOUNCE_SUCCESS,
-  DELETE_ANNOUNCE_FAIL
+  DELETE_ANNOUNCE_FAIL,
+  UPDATE_LIKES,
+  UPDATE_LIKES_FAIL,
+  ADD_COMMENT,
+  REMOVE_COMMENT
 } from "../constants/actionTypesAnnouce";
 
 // get all of public announce
-export const getPublicAnnounce = () => async (dispatsh) => {
+export const getPublicAnnounce = (skip,limit) => async (dispatsh) => {
   dispatsh({ type: GET_PUBLIC_ANNOUCE });
   try {
-    const result = await axios.get("/announce/pubannounce");
+    const result = await axios.get(`/announce/pubannounce?limit=${limit}&skip=${skip}`);
     dispatsh({ type: GET_PUBLIC_ANNOUCE_SUCCESS, payload: result.data });
   } catch (error) {
     dispatsh({ type: GET_PUBLIC_ANNOUCE_FAIL, payload: error.response.data });
@@ -108,9 +112,62 @@ export const deleteAnnounce = (id) => async (dispatsh) => {
   };
   try {
     const result = await axios.delete(`/announce/${id}`, config);
-    dispatsh({ type: DELETE_ANNOUNCE_SUCCESS, payload: result.data });
-    dispatsh(getPrivateUserAnnounce());
+    dispatsh({ type: DELETE_ANNOUNCE_SUCCESS, payload:id});
+    //dispatsh(getPrivateUserAnnounce());
   } catch (error) {
     dispatsh({ type: DELETE_ANNOUNCE_FAIL, payload: error.response.data });
+  }
+};
+//Add like or unlike 
+export const addLike = (id) => async (dispatsh) => {
+  const token = localStorage.getItem("token");
+  try {
+    const result =await axios({
+      method: "put",
+      url: `/announce/like/${id}`,
+      headers: {
+       
+         Authorization: token,
+       }
+    })
+  dispatsh({ type: UPDATE_LIKES, payload:{ id,likes:result.data }});
+  } catch (error) {
+    dispatsh({ type: UPDATE_LIKES_FAIL, payload: error.response.data });
+  }
+};
+//Add comment
+export const addComment = (announceId, formData) => async (dispatsh) => {
+  
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+  };
+  try {
+    const result = await axios.post(`http://localhost:5000/announce/comment/${announceId}`,formData,config);
+  dispatsh({ type: ADD_COMMENT, payload:result.data});
+  } catch (error) {
+    dispatsh({ type: UPDATE_LIKES_FAIL, payload: error.response.data });
+  }
+};
+
+//Delete comment
+//Add comment
+export const deleteComment = (announceId,commentId) => async (dispatsh) => {
+  const token = localStorage.getItem("token");
+  try {
+    const result =await axios({
+      method: "delete",
+      url: `/announce/comment/${announceId}/${commentId}`,
+      headers: {
+       
+         Authorization: token,
+      },
+     
+    })
+  dispatsh({ type: REMOVE_COMMENT, payload:commentId});
+  } catch (error) {
+    dispatsh({ type: UPDATE_LIKES_FAIL, payload: error.response.data });
   }
 };

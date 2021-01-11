@@ -4,4 +4,11 @@
     flex-wrap: wrap;
     
     padding: 2%;
+    height:850px;
+}
+
+.pagination-pubAnnounce {
+    text-align: center;
+    bottom: 0%;
+    
 }
