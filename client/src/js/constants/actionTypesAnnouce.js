@@ -23,3 +23,9 @@ export const POST_ANNOUNCE_FAIL = "POST_ANNOUNCE_FAIL";
 // Delete private announce
 export const DELETE_ANNOUNCE_SUCCESS = "DELETE_ANNOUNCE_SUCCESS";
 export const DELETE_ANNOUNCE_FAIL = "DELETE_ANNOUNCE_FAIL";
+//update like dislike announce
+export const UPDATE_LIKES = "UPDATE_LIKES";
+export const UPDATE_LIKES_FAIL = "UPDATE_LIKES_FAIL";
+// add and remove comment announce
+export const ADD_COMMENT = "ADD_COMMENT";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";

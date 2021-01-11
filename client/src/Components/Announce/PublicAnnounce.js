@@ -29,6 +29,7 @@ function PublicAnnounce({ announce }) {
   
   return (
     <div class="ribbon-bookmark-v text-vertical" data-position="left bottom">
+      
       <Card className={classes.root}  >
         <CardActionArea>
           <CardMedia
