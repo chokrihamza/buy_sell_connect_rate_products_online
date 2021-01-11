@@ -27,8 +27,9 @@ function App() {
         <Route path='/profile' component={Profile} />
         <Route path='/announce/:id' component={Announce}/>
         <Route path='/postAnnounce' component={CreateAnnounce}/>
-        <Route path='*/' component={Error}/>
         <Route path='/comment' component={Comment} />
+        <Route path='*/' component={Error}/>
+        
 
       </Switch>
     </BrowserRouter>

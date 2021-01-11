@@ -1,39 +1,37 @@
+.comment-design{
+  padding: 1%;
+}
 .chat {
-    width: 300px;
-   
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-  }
-  
-  .messages {
-    
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .message {
-    border-radius: 20px;
-    padding: 8px 15px;
-    margin-top: 5px;
-    
-    display: inline-block;
-  }
-  
-  .yours {
-    align-items: flex-start;
-  }
-  
-  .yours .message {
-    margin-right: 25%;
-    background-color: rgb(255, 25, 0);
-    position: relative;
-  }
-  
+  width: 300px;
 
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
 
-  .mine {
-    align-items: flex-end;
-  }
-  
-  
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 5px;
+
+  display: inline-block;
+}
+
+.yours {
+  align-items: flex-start;
+}
+
+.yours .message {
+  margin-right: 25%;
+  background-color: rgb(255, 25, 0);
+  position: relative;
+}
+
+.mine {
+  align-items: flex-end;
+}
