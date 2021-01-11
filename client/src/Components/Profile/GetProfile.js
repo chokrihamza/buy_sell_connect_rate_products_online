@@ -8,6 +8,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { Spinner } from "reactstrap";
 import { deleteProfile } from "../../js/actions/actionprofile";
 import { Button, Modal, Form } from "react-bootstrap";
+import OwnerAnnounce from "../Announce/OwnerAnnounce"
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 const useStyles = makeStyles((theme) => ({
@@ -16,26 +17,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function GetProfile() {
-// state to update profile
-const [location, setLocation] = useState();
-const [adresse, setAdresse] = useState();
-const [farmerDomaine, setFarmerDomaine] = useState();
-const [image, setImage] = useState();
-const data = new FormData();
+  // state to update profile
+  const [location, setLocation] = useState();
+  const [adresse, setAdresse] = useState();
+  const [farmerDomaine, setFarmerDomaine] = useState();
+  const [image, setImage] = useState();
+  const data = new FormData();
   data.append("location", location);
   data.append("adresse", adresse);
   data.append("farmerDomaine", farmerDomaine);
   data.append("image", image);
 
-
-
   const dispatch = useDispatch();
- 
+  const announce = useSelector(state => state.announceReducer.announce);
   const user = useSelector((state) => state.userReducer.user);
   const profile = useSelector((state) => state.profileReducer.profile);
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);
 
   const token = localStorage.getItem("token");
+  
   const history = useHistory();
   const [show, setShow] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -44,7 +44,7 @@ const data = new FormData();
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = () => setShowEdit(true);
   const classes = useStyles();
-if (!token) {
+  if (!token) {
     return <Redirect to="/" />;
   } else if (loadProfile) {
     return (
@@ -58,20 +58,44 @@ if (!token) {
       />
     );
   } else {
-    return (<div className="position-profil">
-      <div className="card-item">
-        <div className="card-header">
-          <div className="card-header__bg"></div>
-          <img src={profile.image} className="card-header__img" alt="user"/>
-          <div className="card-process">
-            {/* button of Edit profile*/}
-            <button className="process__item" onClick={() => handleShowEdit()}>
-              <div className="process-icon follow">
-                <i className="far fa-edit"></i>
+    return (
+      <div className="container-Profile">
+        <div className="profile-header">
+          <div className="profile-img">
+            <img src={profile.image} alt="profile.img" />
+          </div>
+          <div className="profile-nav-info">
+            <h3 className="user-name">{user.name}</h3>
+            <div className="address">
+              <span className="state">{profile.location}</span>
+              <p className="addressss">, {profile.adresse}.</p>
+            </div>
+          </div>
+          <div className="profile-option">
+            <div className="notification">
+              <i className="fa fa-bell" />
+              <span className="alert-message">1</span>
+            </div>
+          </div>
+        </div>
+        <div className="main-bd">
+          <div className="left-side">
+            <div className="profile-side">
+              <p className="mobile-no">
+                <i className="fa fa-phone" />
+                {user.phoneNumber}
+              </p>
+              <div className="user-mail">
+                <p className="mobile-no">
+                  <i className="fa fa-envelope" />
+                  {user.email}
+                </p>
               </div>
-              <span className="process-txt">Edit</span>
-            </button>
-            <Modal show={showEdit} onHide={handleCloseEdit} centered>
+              <div className="profile-btn">
+              <button className="editbtn" onClick={() => handleShowEdit()}>
+              <i class="fas fa-edit"></i> Edit 
+              </button>
+              <Modal show={showEdit} onHide={handleCloseEdit} centered>
               <Modal.Header closeButton>
                 <Modal.Title>Update profile</Modal.Title>
               </Modal.Header>
@@ -151,19 +175,12 @@ if (!token) {
                 </Button>
               </Modal.Footer>
             </Modal>
-            {/* button of delete profile */}
-            <button
-              onClick={() => {
+              <button className="deletebtn" onClick={() => {
                 handleShow();
-              }}
-              className="process__item"
-            >
-              <div className="process-icon message">
-                <i className="fas fa-trash-alt"></i>
-              </div>
-              <span className="process-txt">Delete</span>
-            </button>
-            <Modal show={show} onHide={handleClose}>
+              }}>
+              <i class="fas fa-user-slash"></i> Delete 
+              </button>
+              <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Warning</Modal.Title>
               </Modal.Header>
@@ -189,36 +206,16 @@ if (!token) {
                 </Button>
               </Modal.Footer>
             </Modal>
+            </div>
+            </div>
           </div>
-          {/* info of user */}
-          <div className="card-header__text">
-            <span className="card-header__name">{user.name}</span>
-            <span className="card-header__job">Phone:{user.phoneNumber}</span>
-            <span className="card-header__job">email:{user.email}</span>
+          <div className="right-side">
+            <div className="nav"><h3>Posts</h3></div>
+            <div className="profile-posts tab">{announce.map((el, i) => (
+                      <OwnerAnnounce announce={el} key={i} />
+                ) )}</div>
           </div>
         </div>
-        <ul className="card-detail">
-          <li className="card-detail__li">
-            <p className="card-detail__txt">Location:</p>
-            <p className="card-detail__str">{profile.location}</p>
-          </li>
-          <li className="card-detail__li">
-            <p className="card-detail__txt">adresse:</p>
-            <p className="card-detail__str">{profile.adresse}</p>
-          </li>
-          <li className="card-detail__li">
-            <p className="card-detail__txt">Farmer Domaine:</p>
-            <ul>
-              {profile&&profile.farmerDomaine.map((e, i) => (
-                <li key={i} className="card-detail__str1" colSpan="2">
-                  {e}
-                </li>
-              ))}
-            </ul>
-          </li>
-        </ul>
-        <i className="card-header__icon">CreatedAt:{profile.updatedAt}</i>
-      </div>
       </div>
     );
   }

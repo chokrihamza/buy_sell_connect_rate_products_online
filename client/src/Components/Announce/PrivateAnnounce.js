@@ -14,11 +14,15 @@ import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import {  useHistory } from 'react-router-dom';
-import CardActionArea from '@material-ui/core/CardActionArea';
+  import CardActionArea from '@material-ui/core/CardActionArea';
 import { deleteAnnounce } from "../../js/actions/actionAnnouce";
 import { useDispatch, useSelector } from "react-redux";
+
+import "./PrivateAnnounce.css"
+
 import { addLike } from "../../js/actions/actionAnnouce";
 import {Link} from "react-router-dom"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,7 +79,7 @@ const history = useHistory();
    const [likesclone, setlikesclone] = useState(likes);
  
   return (
-    <div>
+    <div  className="design-prAnnounce" >
       <Card className={classes.root}>
       
       <CardActionArea onClick={()=>history.push(`/announce/${_id}`)}>

@@ -10,3 +10,12 @@
     align-content: space-between !important;
     padding: 2%;
 }
+@media(max-width:900px){
+    .design-privAnnounce{
+        display: flex;
+        flex-direction: column;
+       align-items:center;
+       padding: 0 50px;
+      
+    }
+}

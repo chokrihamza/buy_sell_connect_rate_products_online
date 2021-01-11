@@ -9,7 +9,9 @@ import Profile from './Pages/Profile';
 import Welcom from './Pages/Welcom';
 import Announce from './Pages/Announce';
 import CreateAnnounce from "./Pages/CreateAnnounce";
+import Error from './Pages/Error';
 import Comment from './Components/Comment/Comment';
+
 
 
 
@@ -24,8 +26,10 @@ function App() {
         <Route path='/login' component={Signin} />
         <Route path='/profile' component={Profile} />
         <Route path='/announce/:id' component={Announce}/>
-        <Route path='/postAnnounce' component={CreateAnnounce} />
+        <Route path='/postAnnounce' component={CreateAnnounce}/>
+        <Route path='*/' component={Error}/>
         <Route path='/comment' component={Comment} />
+
       </Switch>
     </BrowserRouter>
 
