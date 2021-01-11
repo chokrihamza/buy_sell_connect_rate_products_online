@@ -14,10 +14,10 @@ import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import {  useHistory } from 'react-router-dom';
-import CardActionArea from '@material-ui/core/CardActionArea';
+  import CardActionArea from '@material-ui/core/CardActionArea';
 import { deleteAnnounce } from "../../js/actions/actionAnnouce";
 import { useDispatch, useSelector } from "react-redux";
-
+import "./PrivateAnnounce.css"
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -69,7 +69,7 @@ function PrivateAnnounce({ announce }) {
 const history = useHistory();
 
   return (
-    <div>
+    <div  className="design-prAnnounce" >
       <Card className={classes.root}>
       
       <CardActionArea onClick={()=>history.push(`/announce/${_id}`)}>

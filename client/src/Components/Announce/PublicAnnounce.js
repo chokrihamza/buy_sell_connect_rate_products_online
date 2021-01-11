@@ -28,7 +28,7 @@ function PublicAnnounce({ announce }) {
   } = announce;
   
   return (
-    <div class="ribbon-bookmark-v text-vertical" data-position="left bottom">
+    <div className="positon-design ribbon-bookmark-v text-vertical" data-position="left bottom">
       <Card className={classes.root}  >
         <CardActionArea>
           <CardMedia

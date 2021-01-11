@@ -3,7 +3,9 @@
     justify-content: space-between;
     vertical-align: middle;
 }
-
+.positon-design{
+    margin: 2%;
+}
 .design-btn-container {
    bottom: 0% !important;
 }

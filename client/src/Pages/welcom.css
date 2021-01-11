@@ -1,7 +1,7 @@
 .design-pubAnnounce {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    align-content: space-between !important;
+    
     padding: 2%;
 }

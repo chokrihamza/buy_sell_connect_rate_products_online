@@ -1,0 +1,70 @@
+.card_image img {
+  height: 103px;
+  max-width: 100%;
+  vertical-align: middle;
+
+}
+.card-ownerAnnonce {
+  border-radius: 8px;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 25%;
+  font-family: "Quicksand", serif;
+  margin: 2%;
+}
+.card_content {
+  padding: 1rem;
+  background: rgb(181,167,237);
+  background: radial-gradient(circle, rgba(181,167,237,1) 0%, rgb(57, 57, 105) 100%);
+}
+.card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+.card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+.card_image{
+    position: relative;
+}
+.delete-btn{
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    position: absolute;
+   right: 0px;
+   z-index: 5;
+    
+}
+.delete-btn span {
+    font-weight: bold;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: gray;
+}
+.delete-btn span:hover{
+    color: rgb(190, 35, 35);
+  text-shadow: 
+    
+   2px 1.5px 0px #ccc;
+}
+.delete-btn span:visited{
+    border: none;
+    outline: none;
+}
+@media(max-width:400px){
+    .card-ownerAnnonce{
+        width: 53%;
+        margin: 4% 20%
+    }
+}
