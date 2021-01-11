@@ -34,6 +34,7 @@ const data = new FormData();
   const user = useSelector((state) => state.userReducer.user);
   const profile = useSelector((state) => state.profileReducer.profile);
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);
+
   const token = localStorage.getItem("token");
   const history = useHistory();
   const [show, setShow] = useState(false);

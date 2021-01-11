@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Container, Col, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./PostAnnounce.css";
 import { postAnnounce } from "../../js/actions/actionAnnouce";
 import { useHistory } from "react-router-dom";
+import Alert from '@material-ui/lab/Alert';
 const useStyles = makeStyles((theme) => ({
   input: {
     display: "none",
@@ -28,11 +29,14 @@ const PostAnnounces = () => {
   const [price, setPrice] = useState();
   const [Description, setDescription] = useState();
 
-  const handlSubmit = () => {
+  const handleSubmit = () => {
     const data = new FormData();
-    for (const i of Object.keys(productImages)) {
-      data.append("imagesProduct", productImages[i]);
+    if (productImages) {
+      for (const i of Object.keys(productImages)) {
+        data.append("imagesProduct", productImages[i]);
+      }
     }
+    
     data.append("productName", productName);
     data.append("productCategory", productCategory);
     data.append("quantity", quantity);
@@ -41,9 +45,9 @@ const PostAnnounces = () => {
 
     dispatch(postAnnounce(data));
   };
-
+  
   return (
-    <div className="design-PostAnnounce">
+ <div className="design-PostAnnounce">
       <div
         className="file-upload"
         style={{
@@ -141,11 +145,15 @@ const PostAnnounces = () => {
         startIcon={<CloudUploadIcon />}
         type="submit"
         style={{ marginLeft: "43.5%" }}
-        onClick={()=>{handlSubmit();history.push("/profile")}}
+          onClick={() => {
+            handleSubmit();
+            history.push("/Dashboard");
+            }}
       >
         Upload
       </Button>
-    </div>
+      </div>
+  
   );
 };
 

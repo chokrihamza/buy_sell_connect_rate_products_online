@@ -5,7 +5,7 @@ const { postAnnounce,
       getAllannounces,
       getAnnounceById,
       deleteAnnounceById,
-      likeunlikeAnnounceById,
+      likeAnnounceById,
       commentAnnounceById,
       deleteCommentByAnnounceId,
       getAllannouncespublic,
@@ -28,7 +28,7 @@ router.post('/', isAuth(), upload.array('imagesProduct', 10), postAnnounce);
 // @desc     Get all Announces
 // @access   Private
 router.get('/', isAuth(), getAllannounces);
-
+router.put('/like/:id', isAuth(),likeAnnounceById);
 // get owner announce
 // @route    GET /announce/owner
 // @desc     Get announce by ID
@@ -52,7 +52,7 @@ router.delete('/:id', isAuth(), deleteAnnounceById);
 //@route PUT /announce/like/:id
 //@desc Like an announce
 //@access Private
-router.put('/like/:id', isAuth(), likeunlikeAnnounceById);
+
 //@route POST announce/comment/:id
 //@desc Comment an announce 
 //@access Private 

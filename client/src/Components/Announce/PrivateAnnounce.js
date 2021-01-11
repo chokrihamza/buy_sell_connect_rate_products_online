@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -17,6 +17,8 @@ import {  useHistory } from 'react-router-dom';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { deleteAnnounce } from "../../js/actions/actionAnnouce";
 import { useDispatch, useSelector } from "react-redux";
+import { addLike } from "../../js/actions/actionAnnouce";
+import {Link} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,9 +55,11 @@ function PrivateAnnounce({ announce }) {
     updatedAt,
     user,
     userImage,
+    likes,
+    comments,
     _id
   } = announce
-  
+
   const personid = useSelector(state => state.userReducer.user._id)
  
  const dispatch = useDispatch()
@@ -67,7 +71,9 @@ function PrivateAnnounce({ announce }) {
   };
 //usehistory
 const history = useHistory();
-
+// toggle like unlike button
+   const [likesclone, setlikesclone] = useState(likes);
+ 
   return (
     <div>
       <Card className={classes.root}>
@@ -98,14 +104,18 @@ const history = useHistory();
           </CardContent>
           </CardActionArea>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+          <IconButton style={likesclone.length-likes.length>0?{ color: "black" }:{ color: "red" }} aria-label="add to favorites" onClick={(e) => { dispatch(addLike(_id)) }}>
+            <FavoriteIcon /><sup style={{ color: "red" }}><small>{likes.length}</small><small>{likes.length>1?"likes":"like" }</small></sup>
           </IconButton>
-          <IconButton aria-label="add a comment">
+          <Link to={{pathname: "/comment",state: {comments:comments, idComment: _id }
+              }}>
+          <IconButton aria-label="add a comment" >
           <i class="far fa-comment-dots"></i>
           </IconButton>
+          </Link>
+          
           {(user&&user._id===personid)?<IconButton aria-label="delete announce" onClick={()=>dispatch(deleteAnnounce(_id))}>
-          <i class="fas fa-recycle"></i>
+          <i class="fas fa-trash-alt"></i>
           </IconButton>:null}
           <IconButton
             className={clsx(classes.expand, {

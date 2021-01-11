@@ -9,7 +9,7 @@ const Profile = require('../models/Profile');
 
 exports.postAnnounce = async (req, res) => {
     const newAnnounce = {};
-    console.log(req.files)
+    
     let images = [];
     let countImages = 0;
     for (const { path } of req.files) {
@@ -17,7 +17,7 @@ exports.postAnnounce = async (req, res) => {
         countImages++;
     }
     newAnnounce.productImages = images;
-    console.log(images)
+    
     const {
         productName,
         productCategory,
@@ -56,6 +56,7 @@ exports.postAnnounce = async (req, res) => {
 // @desc     Get all announces
 // @access   Private
 exports.getAllannounces = async (req, res) => {
+    
     try {
         const announces = await Announce.find().sort({ date: -1 }).populate("user");
         res.json(announces);
@@ -68,10 +69,14 @@ exports.getAllannounces = async (req, res) => {
 // @desc     Get all announces select [-(likes && comments)]
 // @access   Public
 exports.getAllannouncespublic = async (req, res) => {
+    let skip = Number(req.query.skip);
+    let limit = Number(req.query.limit);
+    
     try {
-        const announces = await Announce.find().limit(10).sort({ date: -1 }).select('-likes -comments');
-         
-         res.json(announces);
+        const numberOfAnnounce = (await Announce.find()).length
+        
+        const announces = await Announce.find().limit(limit).skip(skip).sort({ date: -1 }).select('-likes -comments');
+        res.json({announces,numberOfAnnounce});
        
     } catch (err) {
         console.error(err.message);
@@ -149,7 +154,8 @@ exports.deleteAnnounceById = async (req, res) => {
 //@route PUT /announce/like/:id
 //@desc Like && unlike  an announce
 //@access Private
-exports.likeunlikeAnnounceById = async (req, res) => {
+exports.likeAnnounceById = async (req, res) => {
+   
     try {
         const announce = await Announce.findById(req.params.id);
         //if the announce not liked 
@@ -199,14 +205,17 @@ exports.unlikeAnnounceById = async (req, res) => {
 //@access Private 
 
 exports.commentAnnounceById = async (req, res) => {
+    console.log(req.body);
     try {
         const user = await User.findById(req.user.id).select('-password');
+        const profile = await Profile.find({user});
+       
         const announce = await Announce.findById(req.params.id);
         const newComment = {
             user: req.user.id,
             text: req.body.text,
             name: user.name,
-            image: user.image,
+            image: profile[0].image,
 
         }
         announce.comments.unshift(newComment);
@@ -232,7 +241,7 @@ exports.deleteCommentByAnnounceId = async (req, res) => {
         );
         //commnet Must exists
         if (!comment) {
-            return res.status(404).json({ msg: 'Commnent does not exist' });
+            return res.status(404).json({ msg: 'Comment does not exist' });
 
         }
         // Test the user

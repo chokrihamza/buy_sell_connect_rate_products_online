@@ -5,11 +5,11 @@ import './App.css';
 import Signup from './Pages/Signup';
 import Signin from './Pages/Signin';
 import Dashboard from './Pages/Dashboard';
-
 import Profile from './Pages/Profile';
 import Welcom from './Pages/Welcom';
 import Announce from './Pages/Announce';
 import CreateAnnounce from "./Pages/CreateAnnounce";
+import Comment from './Components/Comment/Comment';
 
 
 
@@ -24,7 +24,8 @@ function App() {
         <Route path='/login' component={Signin} />
         <Route path='/profile' component={Profile} />
         <Route path='/announce/:id' component={Announce}/>
-        <Route path='/postAnnounce' component={CreateAnnounce}/>
+        <Route path='/postAnnounce' component={CreateAnnounce} />
+        <Route path='/comment' component={Comment} />
       </Switch>
     </BrowserRouter>
 

@@ -18,6 +18,7 @@ const express = require('express');
 const app = express();
 const config = require('config');
 const PORT = config.get('PORT');
+const cors = require('cors')
 // Express body parser
 //using admin bro 
 AdminBro.registerAdapter(AdminBroMongoose);
@@ -51,8 +52,10 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
 
 
 })
+app.use(cors());
 app.use(adminBro.options.rootPath, router);
 app.use(express.json());
+
 app.use('/imagesProduct', express.static('imagesProduct'));
 app.use('/uploads', express.static('uploads'));
 app.use('/assets', express.static('assets'));
