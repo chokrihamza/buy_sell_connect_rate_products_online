@@ -56,15 +56,23 @@ exports.postAnnounce = async (req, res) => {
 // @desc     Get all announces
 // @access   Private
 exports.getAllannounces = async (req, res) => {
-    
+    let val= req.query.search;
     try {
-        const announces = await Announce.find().sort({ date: -1 }).populate("user");
-        res.json(announces);
-    } catch (err) {
+        if (val === "undefined") {
+            let announce = await Announce.find().sort({ date: -1 }).populate("user");
+            return  res.status(200).json(announce);
+        } else {
+            let announce= await Announce.find({ productCategory: val }).sort({ date: -1 }).populate("user");
+            return  res.status(200).json(announce);
+        }
+          
+        
+        } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
 }
+
 // @route    GET /announce
 // @desc     Get all announces select [-(likes && comments)]
 // @access   Public

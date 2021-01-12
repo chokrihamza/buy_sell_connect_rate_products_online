@@ -24,6 +24,7 @@ import { addLike } from "../../js/actions/actionAnnouce";
 import {Link} from "react-router-dom"
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -79,7 +80,8 @@ const history = useHistory();
    const [likesclone, setlikesclone] = useState(likes);
  
   return (
-    <div  className="design-prAnnounce" >
+    <div className="design-prAnnounce" >
+      
       <Card className={classes.root}>
       
       <CardActionArea onClick={()=>history.push(`/announce/${_id}`)}>
@@ -101,7 +103,7 @@ const history = useHistory();
           />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            Price:{quantity}<br/>
+            Quantity:{quantity}<br/>
             Price:{price}<br/>
             Description:{Description}
           </Typography>
