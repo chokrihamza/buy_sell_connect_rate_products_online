@@ -83,10 +83,11 @@ const PostAnnounces = () => {
             onChange={(e) => {
               setProductName(e.target.value);
             }}
+            className="mb-4"
           />
           <Container>
             <Row>
-              <Col>
+              <Col className="mb-4">
                 Quantity:
                 <Form.Control
                   type="text"
@@ -109,7 +110,7 @@ const PostAnnounces = () => {
             </Row>
           </Container>
           <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Product Category</Form.Label>
+            <Form.Label>Product Category:</Form.Label>
             <Form.Control
               as="select"
               onChange={(e) => {
@@ -123,6 +124,7 @@ const PostAnnounces = () => {
               <option> céréales et dérivés – légumineuses</option>
               <option>sucres et produits sucrés</option>
               <option>boissons</option>
+              <option>autres...</option>
             </Form.Control>
           </Form.Group>
         </div>

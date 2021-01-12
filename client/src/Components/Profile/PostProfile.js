@@ -200,7 +200,8 @@ const PostProfile = () => {
                 setFarmerDomaine(e.target.value);
               }}
               id="standard-basic"
-              label="Farmer Domaine"
+              label="Farmer Domaine or Peasant"
+              style={{width:"120%"}}
             />
           </form>
         </div>
