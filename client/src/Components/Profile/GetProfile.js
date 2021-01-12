@@ -156,7 +156,7 @@ function GetProfile() {
                   className="mb-4"
                   placeholder="Normal text"
                 />
-                Farmer Domaine :
+                Farmer Domaine or Peasant:
                 <Form.Control type="text" placeholder="Normal text" 
                 onChange={(e)=>setFarmerDomaine(e.target.value)} 
                 

@@ -1,19 +1,15 @@
 .design-PostAnnounce {
-    color:white;
+    color:black;
     margin-top: 8%;
-    background-color: rgb(9, 1, 44);
+    background-color:whitesmoke;
     padding: 4%;
-    border-radius: 10px;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
     margin-left: 1%;
     margin-right: 1%;
 }
-.design-bottomPost {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+
 .design-description {
-  
+  margin-left: 26%;
     width: 45%;
 }
 .design-textarea {
