@@ -23,6 +23,7 @@ import "./PrivateAnnounce.css";
 import { addLike } from "../../js/actions/actionAnnouce";
 import { Link } from "react-router-dom";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -77,7 +78,10 @@ function PrivateAnnounce({ announce }) {
   const [likesclone, setlikesclone] = useState(likes);
 
   return (
-    <div className="design-prAnnounce">
+
+    <div className="design-prAnnounce" >
+      
+
       <Card className={classes.root}>
         <CardActionArea onClick={() => history.push(`/announce/${_id}`)}>
           <CardHeader
@@ -92,6 +96,7 @@ function PrivateAnnounce({ announce }) {
             image={productImages[0]}
             title="productImage"
           />
+
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
               Quantity:{quantity}Kg
@@ -100,6 +105,7 @@ function PrivateAnnounce({ announce }) {
               <br />
               Description:{Description}
             </Typography>
+
           </CardContent>
         </CardActionArea>
         <CardActions disableSpacing>

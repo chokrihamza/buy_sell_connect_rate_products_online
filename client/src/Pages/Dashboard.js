@@ -11,6 +11,9 @@ import NavbarPage from "../Components/Layout/Navbar";
 import { getPrivateAnnounce } from "../js/actions/actionAnnouce";
 import PrivateAnnounce from "../Components/Announce/PrivateAnnounce";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Search from "../Components/Search/Search";
+import { UncontrolledAlert } from 'reactstrap';
+
 const Dashboard = () => {
   const profile = useSelector((state) => state.profileReducer.profile);
   const user = useSelector((state) => state.userReducer.user);
@@ -56,10 +59,22 @@ const Dashboard = () => {
         ) : (loadAnnounce) ? (
           <CircularProgress disableShrink />
           ) : (
-              <div className="design-privAnnounce">
-                {
-                  announce.map((el, i) =>
-                    <PrivateAnnounce announce={el} key={i} />)}
+              <div>
+                <div style={{ display: "flex", justifyContent:"center",marginTop:"6%"  }} >
+                  <Search />
+                  
+                 </div>
+                <div className="design-privAnnounce">
+                
+                  {
+                    announce.length == 0 ? (
+                      <UncontrolledAlert  color="danger">
+                      <strong>Oops ? Not Found</strong>.
+                     </UncontrolledAlert>
+                    ):
+                  (announce.map((el, i) =>
+                    <PrivateAnnounce announce={el} key={i} />))}
+                </div>
               </div>
      
             )
