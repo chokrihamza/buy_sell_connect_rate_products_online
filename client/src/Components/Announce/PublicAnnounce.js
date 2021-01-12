@@ -8,15 +8,17 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./PublicAnnounce.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     maxWidth: 245,
-    height: 336,
+    height: 280,
     marginTop: 55,
   },
+  
 });
 function PublicAnnounce({ announce }) {
+  const history = useHistory();
   const classes = useStyles();
   const {
     productImages,
@@ -26,13 +28,14 @@ function PublicAnnounce({ announce }) {
     price,
     updatedAt,
   } = announce;
-  
+
   return (
-
-    <div className="positon-design ribbon-bookmark-v text-vertical" data-position="left bottom">
-
-      <Card className={classes.root}  >
-        <CardActionArea>
+    <div
+      className="positon-design ribbon-bookmark-v text-vertical"
+      data-position="left bottom"
+    >
+      <Card className={classes.root}>
+        <CardActionArea onClick={() => history.push("/register  ")}>
           <CardMedia
             component="img"
             alt="productImage"
@@ -65,13 +68,6 @@ function PublicAnnounce({ announce }) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions className="design-btn-container">
-          <Link to="/register">
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
-          </Link>
-        </CardActions>
       </Card>
     </div>
   );
