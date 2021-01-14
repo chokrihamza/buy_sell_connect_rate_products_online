@@ -6,12 +6,14 @@ import { getPrivateAnnounce } from "../../js/actions/actionAnnouce";
 
 const filter = createFilterOptions();
 
-export default function FreeSoloCreateOption() {
+export default function FreeSoloCreateOption(props) {
+ let x=props.x
       const dispatch = useDispatch()
   const [value, setValue] = React.useState(null);
      
       if (value) {
-            dispatch(getPrivateAnnounce(value.title));
+       // dispatch(getPrivateAnnounce(value.title));
+        x(value.title)
       }
   return (
     <Autocomplete

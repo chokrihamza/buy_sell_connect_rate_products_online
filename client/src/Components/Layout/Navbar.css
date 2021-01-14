@@ -6,3 +6,16 @@
     opacity: 0.8;
     top: 0%;
 }
+.Logo:hover{
+    filter:saturate(10);
+    animation: skew 1s ;
+  transform: skew(10deg);
+}
+@keyframes skew {
+    0% {
+      transform: skew(10deg, 10deg);
+    }
+    100% {
+      transform: skew(0deg, 0deg);
+    }
+  }

@@ -1,4 +1,5 @@
 import React from "react";
+import Avatar from '@material-ui/core/Avatar';
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -34,8 +35,10 @@ const NavbarPage = () => {
   const profile = useSelector((state) => state.profileReducer.profile);
 
   return (
-    <MDBNavbar dark expand="md"  className="design-navbar" >
+    <MDBNavbar dark expand="md" className="design-navbar" >
+      <Avatar className="Logo" variant="rounded" alt="image" src="logo.jpg" />
       <MDBNavbarBrand>
+      
         <strong className="white-text">DASHBOARD</strong>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={toggleCollapse("navbarCollapse3")} />

@@ -62,7 +62,7 @@ function PrivateAnnounce({ announce }) {
     comments,
     _id,
   } = announce;
-
+  
   const personid = useSelector((state) => state.userReducer.user._id);
 
   const dispatch = useDispatch();
@@ -137,14 +137,14 @@ function PrivateAnnounce({ announce }) {
             </IconButton>
           </Link>
 
-          {user && user._id === personid ? (
+        { /* {user && user._id === personid ? (
             <IconButton
               aria-label="delete announce"
               onClick={() => dispatch(deleteAnnounce(_id))}
             >
               <i class="fas fa-trash-alt"></i>
             </IconButton>
-          ) : null}
+        ) : null}*/}
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,

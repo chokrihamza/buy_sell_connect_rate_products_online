@@ -28,9 +28,10 @@ const PostAnnounces = () => {
   const [quantity, setQuantity] = useState();
   const [price, setPrice] = useState();
   const [Description, setDescription] = useState();
-
+ 
   const handleSubmit = () => {
     const data = new FormData();
+   
     if (productImages) {
       for (const i of Object.keys(productImages)) {
         data.append("imagesProduct", productImages[i]);
