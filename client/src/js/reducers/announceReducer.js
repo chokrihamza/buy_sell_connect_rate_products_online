@@ -84,10 +84,12 @@ const announceReducer = (state = initialState, { type, payload }) => {
     case UPDATE_LIKES:
       return {
         ...state,
-        announce: state.announce.map(
+        announce: {
+          ...state.announce,
+          announces:state.announce.announces.map(
           post => post._id === payload.id ? { ...post, likes: payload.likes }
             : post
-        ), loadAnnounce: false
+        )}, loadAnnounce: false
       };
     case UPDATE_LIKES_FAIL:
       return { ...state, updatelikefail: payload };

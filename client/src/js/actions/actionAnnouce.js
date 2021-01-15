@@ -34,7 +34,7 @@ export const getPublicAnnounce = (skip,limit) => async (dispatsh) => {
   }
 };
 // get all of private announce
-export const getPrivateAnnounce = (value) => async (dispatsh) => {
+export const getPrivateAnnounce = (value,limit,skip) => async (dispatsh) => {
   const token = localStorage.getItem("token");
   const config = {
     headers: {
@@ -43,7 +43,7 @@ export const getPrivateAnnounce = (value) => async (dispatsh) => {
   };
   dispatsh({ type: GET_PRIVATE_ANNOUCE });
   try {
-    const result = await axios.get(`/announce?search=${value}`, config);
+    const result = await axios.get(`/announce?search=${value}&limit=${limit}&skip=${skip}`, config);
     dispatsh({ type: GET_PRIVATE_ANNOUCE_SUCCESS, payload: result.data });
   } catch (error) {
     dispatsh({ type: GET_PRIVATE_ANNOUCE_FAIL, payload: error.response.data });

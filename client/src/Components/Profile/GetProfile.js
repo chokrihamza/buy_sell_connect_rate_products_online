@@ -11,6 +11,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import OwnerAnnounce from "../Announce/OwnerAnnounce"
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
+
 const useStyles = makeStyles((theme) => ({
   input: {
     display: "none",
@@ -30,6 +31,8 @@ function GetProfile() {
 
   const dispatch = useDispatch();
   const announce = useSelector(state => state.announceReducer.announce);
+  const loadAnnounce=useSelector(state => state.announceReducer.loadAnnounce);
+  console.log(loadAnnounce)
   const user = useSelector((state) => state.userReducer.user);
   const profile = useSelector((state) => state.profileReducer.profile);
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);
@@ -211,7 +214,16 @@ function GetProfile() {
           </div>
           <div className="right-side">
             <div className="nav"><h3>Posts</h3></div>
-            <div className="profile-posts tab">{announce.map((el, i) => (
+            <div className="profile-posts tab">{
+              loadAnnounce?<Spinner
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+              }}
+              color="primary"
+            />:
+              announce && announce.map((el, i) => (
                       <OwnerAnnounce announce={el} key={i} />
                 ) )}</div>
           </div>

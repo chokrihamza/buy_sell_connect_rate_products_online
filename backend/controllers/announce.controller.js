@@ -56,14 +56,21 @@ exports.postAnnounce = async (req, res) => {
 // @desc     Get all announces
 // @access   Private
 exports.getAllannounces = async (req, res) => {
-    let val= req.query.search;
+    console.log(req.query)
+    let skip = Number(req.query.skip);
+    let val = req.query.search;
+    let limit = Number(req.query.limit);
+ 
     try {
-        if (val === "undefined") {
-            let announce = await Announce.find().sort({ date: -1 }).populate("user");
-            return  res.status(200).json(announce);
+        
+        if (val === "null") {
+            const numberOfAnnounce = (await Announce.find()).length
+            const announces = await Announce.find().limit(limit).skip(skip).sort({ date: -1 }).populate("user");
+            return  res.status(200).json({announces,numberOfAnnounce});
         } else {
-            let announce= await Announce.find({ productCategory: val }).sort({ date: -1 }).populate("user");
-            return  res.status(200).json(announce);
+            const numberOfAnnounce = (await Announce.find({ productCategory: val })).length
+            const announces= await Announce.find({ productCategory: val }).limit(limit).skip(skip).sort({ date: -1 }).populate("user");
+            return  res.status(200).json({announces,numberOfAnnounce});
         }
           
         
