@@ -1,0 +1,16 @@
+#section{
+      
+      background-color:rgba(255, 255, 255, 0.857) ;
+      opacity: 0.9;
+      font-size: 150%;
+    }
+
+.item:hover{
+   transform: scale(1.1);
+   transition: ease-out 1s;
+   filter: saturate(1.5);
+}
+
+#discription{
+    text-align: center;
+}

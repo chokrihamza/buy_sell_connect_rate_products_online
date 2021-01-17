@@ -26,6 +26,7 @@
     "react-hot-loader": "^4.13.0",
     "react-images-upload": "^1.2.8",
     "react-multiple-image-input": "^1.0.0",
+    "react-owl-carousel": "^2.3.1",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",

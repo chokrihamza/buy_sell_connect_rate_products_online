@@ -1,0 +1,37 @@
+#homes{
+      background: linear-gradient(210deg, #1e1bff 64%, #ffffff 30%);
+      height: 700px;
+}
+#imagelogo{
+     
+     width: 40%;
+     border-top-left-radius: 15%;
+     height: auto;
+     margin-left:55%;
+     margin-top:20%;
+     filter: contrast(200%);
+     transition: all 300ms;
+}
+
+#text{
+     
+     font-size: 40px;
+     color: rgb(255, 217, 0);
+     position: absolute;
+     margin-top: 20%;
+     margin-left:10%;
+     
+}
+
+
+#object{
+    
+     font-size: 300%;
+     color: rgb(255, 217, 0);
+     position: absolute;
+     margin-top: 10%;
+     right: 0%;
+     text-transform: uppercase;
+    font-weight: 700;
+    
+}
