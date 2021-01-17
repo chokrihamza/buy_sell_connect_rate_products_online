@@ -11,8 +11,8 @@ import Announce from './Pages/Announce';
 import CreateAnnounce from "./Pages/CreateAnnounce";
 import Error from './Pages/Error';
 import Comment from './Components/Comment/Comment';
-
-
+import Aboutus from './Pages/Aboutus'
+import Home from './Pages/Home'
 
 
 
@@ -20,7 +20,10 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/' component={Welcom} />
+      
+        <Route exact path='/' component={Home} />
+        <Route path='/ourproducts' component={Welcom} />
+        <Route path='/aboutus' component={Aboutus} />
         <Route path='/Dashboard' component={Dashboard} />
         <Route path='/register' component={Signup} />
         <Route path='/login' component={Signin} />

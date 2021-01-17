@@ -1,5 +1,15 @@
+#home:hover{
+  color:rgb(255, 231, 47);
+  
+}
+#aboutus:hover{
+  color:rgb(255, 231, 47);
+}
+#login:hover{
+  color:rgb(255, 231, 47);
+}
 .design-navbar {
-    background-color: #32325d;
+    background-color: #1861e8;
     position: fixed;
     width: 100%;
     z-index: 4;

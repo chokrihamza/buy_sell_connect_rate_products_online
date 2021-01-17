@@ -39,17 +39,36 @@ const NavbarPage = () => {
       <Avatar className="Logo" variant="rounded" alt="image" src="logo.jpg" />
       <MDBNavbarBrand>
       
-        <strong className="white-text">DASHBOARD</strong>
+        <strong className="white-text">Farmers Traiding</strong>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={toggleCollapse("navbarCollapse3")} />
       <MDBCollapse id="navbarCollapse3" isOpen={state.collapseID} navbar>
         <MDBNavbarNav right>
-          {!profile ?<MDBNavItem>
-            <MDBNavLink className="waves-effect waves-light" to="/login">
+          {!profile ?<>
+            <MDBNavItem>
+            <MDBNavLink id="home"  className="waves-effect waves-light" to="/">
+            <i  class="fas fa-home"></i>
+              Home
+            </MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+            <MDBNavLink id="aboutus" className="waves-effect waves-light" to="/aboutus">
+            <i class="fas fa-address-card"></i>
+              About us
+            </MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+            <MDBNavLink id="aboutus" className="waves-effect waves-light" to="/ourproducts">
+            <i class="fas fa-shopping-cart"></i>
+              Our Products
+            </MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+            <MDBNavLink id="login" className="waves-effect waves-light" to="/login">
               <i className="fas fa-sign-in-alt"></i>
               SignIn
             </MDBNavLink>
-          </MDBNavItem>: <MDBNavItem>
+          </MDBNavItem></>: <MDBNavItem>
             <MDBNavLink className="waves-effect waves-light" to="/Dashboard">
             <i class="fas fa-home"></i>
               Dashboard

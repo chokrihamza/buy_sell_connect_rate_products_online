@@ -109,7 +109,7 @@ const Dashboard = () => {
                     <PrivateAnnounce announce={el} key={i} />))}
                   
                 </div>
-                <div className="pagination-pubAnnounce">{items}</div>
+                <div  className="pagination-pubAnnounce">{items}</div>
               </div>
      
             )
