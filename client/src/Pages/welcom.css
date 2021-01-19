@@ -5,7 +5,19 @@
     
     
 }
-
+.title-welcome{
+    margin-left: 2%;
+    margin-top: 7%;
+    margin-bottom: -4%;
+    font-size: 16px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: lighter;
+    color: cornflowerblue;
+}
+.title-welcome:hover{
+text-decoration: underline;
+color:darkred;
+}
 .pagination-pubAnnounce {
     text-align: center;
     bottom: 0%;

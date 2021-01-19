@@ -1,31 +1,39 @@
-#home:hover{
-  color:rgb(255, 231, 47);
-  
+#home:hover {
+  color: rgb(255, 231, 47);
 }
-#aboutus:hover{
-  color:rgb(255, 231, 47);
+#aboutus:hover {
+  color: rgb(255, 231, 47);
 }
-#login:hover{
-  color:rgb(255, 231, 47);
+#login:hover {
+  color: rgb(255, 231, 47);
 }
 .design-navbar {
-    background-color: #1861e8;
-    position: fixed;
-    width: 100%;
-    z-index: 4;
-    opacity: 0.8;
-    top: 0%;
+  background-color: #1861e8;
+  position: fixed;
+  width: 100%;
+  z-index: 4;
+  opacity: 0.8;
+  top: 0%;
 }
-.Logo:hover{
-    filter:saturate(10);
-    animation: skew 1s ;
+.Logo:hover {
+  filter: saturate(10);
+  animation: skew 1s;
   transform: skew(10deg);
 }
 @keyframes skew {
-    0% {
-      transform: skew(10deg, 10deg);
-    }
-    100% {
-      transform: skew(0deg, 0deg);
-    }
+  0% {
+    transform: skew(10deg, 10deg);
   }
+  100% {
+    transform: skew(0deg, 0deg);
+  }
+}
+.Logo {
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: 9px !important;
+}
+.white-text {
+  text-shadow: horizontal-offset vertical-offset blur color;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}

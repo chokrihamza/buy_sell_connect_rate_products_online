@@ -10,10 +10,10 @@ function OwnerAnnounce({announce}) {
   return (
     
       <div className="card-ownerAnnonce">
-          <CardActionArea onClick={()=>history.push(`/announce/${announce._id}`)}>
+          <CardActionArea>
         <div className="card_image">
           <img src={announce.productImages[0]} />
-          <button className="delete-btn" onClick={()=>dispatch(deleteAnnounce(announce._id))}><span>X</span></button>
+          <button className="delete-btn" onClick={()=>{dispatch(deleteAnnounce(announce._id));history.push('/profile')}}><span>X</span></button>
         </div>
         <div className="card_content">
           <h2 className="card_title">{announce.productName}</h2>
