@@ -1,6 +1,52 @@
-#footer{
+
+.footer-style {
+      width: 100%;
+      margin-top: 4%;
+      background: black;
       height: 200px;
-   
-      color: white;
       font-family: fangsong;
-}
+  }
+  .img-style{
+      width: 38%;
+      margin-top: 7%;
+      margin-left: 11%;
+  }
+  .middle-style {
+      text-align: center;
+      margin-top: 5%;
+      color: white;
+      font-family: 'Noto Sans JP', sans-serif;  
+  }
+  .middle-style span {
+      letter-spacing: 2px;
+  }
+  .middle-style p {
+      font-size: 13px;
+      margin-top: 1%;
+      letter-spacing: 0.5px;
+  }
+  .right-style{
+      text-align: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      margin-top: 4%;
+  }
+  .right-style ul{
+      list-style-type: none;
+      margin-top: 6%;
+  }
+  .right-style ul li{
+      color: white;
+      font-size: 12px;
+  }
+  .right-style ul li:hover {
+   text-decoration: underline;
+   color: teal;
+   font-size: 12px;
+  }
+  .right-style span {
+        margin-left: 12%;
+        font-size: 13px;
+  }
+  

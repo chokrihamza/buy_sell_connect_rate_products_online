@@ -1,5 +1,5 @@
 :root {
-  --color:#393969;
+  --color:#1861e8;
 }
 .container-Profile {
   margin-top: 5%;
@@ -178,7 +178,7 @@
   }
   .nav:active,
   .nav:hover {
-    box-shadow: 0px -3px 0px #393969 inset;
+    box-shadow: 0px -3px 0px #1861e8 inset;
   }
   .profile-posts {
     width: 100%;

@@ -39,7 +39,7 @@ const NavbarPage = () => {
       <Avatar className="Logo" variant="rounded" alt="image" src="logo.jpg" />
       <MDBNavbarBrand>
       
-        <strong className="white-text">Farmers Traiding</strong>
+        <strong className="white-text">Farmers Trading</strong>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={toggleCollapse("navbarCollapse3")} />
       <MDBCollapse id="navbarCollapse3" isOpen={state.collapseID} navbar>
@@ -52,15 +52,15 @@ const NavbarPage = () => {
             </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-            <MDBNavLink id="aboutus" className="waves-effect waves-light" to="/aboutus">
-            <i class="fas fa-address-card"></i>
-              About us
-            </MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
             <MDBNavLink id="aboutus" className="waves-effect waves-light" to="/ourproducts">
             <i class="fas fa-shopping-cart"></i>
               Our Products
+            </MDBNavLink>
+            </MDBNavItem>
+            <MDBNavItem>
+            <MDBNavLink id="aboutus" className="waves-effect waves-light" to="/aboutus">
+            <i class="fas fa-address-card"></i>
+              About us
             </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>

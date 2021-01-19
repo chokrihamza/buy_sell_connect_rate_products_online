@@ -7,6 +7,7 @@ import { getPrivateUserAnnounce } from "../js/actions/actionAnnouce";
 import PrivateAnnounce from "../Components/Announce/PrivateAnnounce";
 import "./Profile.css";
 import { getUser } from "../js/actions/actionUser";
+import Footer from "../Components/Layout/footer/Footer";
 const Profile = () => {
   const announce = useSelector((state) => state.announceReducer.announce);
 
@@ -22,6 +23,7 @@ const Profile = () => {
         <div className="paddingAnnounce">
           <GetProfile />
         </div>
+        <Footer/>
       </div>
     );
   }
