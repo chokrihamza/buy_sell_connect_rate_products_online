@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom';
 import AnnounceDetails from '../Components/AnnounceDetails/AnnounceDetails';
+import Footer from '../Components/Layout/footer/Footer';
 import NavebarePage from '../Components/Layout/Navbar';
 
 const Announce = (props) => {
@@ -15,7 +16,7 @@ const Announce = (props) => {
                   <div>
                         <NavebarePage />
                         <AnnounceDetails id={id}/>
-                        
+                        <Footer/>
                   </div>
             )
       }

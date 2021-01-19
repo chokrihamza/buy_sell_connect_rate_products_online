@@ -16,7 +16,7 @@
 #text{
      
      font-size: 40px;
-     color: rgb(255, 217, 0);
+     color: rgb(179, 101, 0);
      position: absolute;
      margin-top: 20%;
      margin-left:10%;
@@ -27,11 +27,16 @@
 #object{
     
      font-size: 300%;
-     color: rgb(255, 217, 0);
+     color:rgb(179, 101, 0);
      position: absolute;
      margin-top: 10%;
      right: 0%;
      text-transform: uppercase;
     font-weight: 700;
     
+}
+.logoHome-design {
+     margin-top: 33%;
+     width: 19%;
+     margin-left: 8%;
 }

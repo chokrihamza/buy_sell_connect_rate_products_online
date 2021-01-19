@@ -17,7 +17,7 @@
 .card_content {
   padding: 1rem;
   background: rgb(181,167,237);
-  background: radial-gradient(circle, rgba(181,167,237,1) 0%, rgb(57, 57, 105) 100%);
+  background: radial-gradient(circle, rgb(126, 143, 243) 0%, #1861e8 100%);
 }
 .card_title {
   color: #ffffff;
@@ -44,7 +44,7 @@
     border: none;
     position: absolute;
    right: 0px;
-   z-index: 5;
+   z-index: 10;
     
 }
 .delete-btn span {

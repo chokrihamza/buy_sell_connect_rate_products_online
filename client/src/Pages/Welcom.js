@@ -7,6 +7,7 @@ import "./welcom.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { PaginationItem } from "@material-ui/lab";
 import Pagination from "react-bootstrap/Pagination";
+import Footer from "../Components/Layout/footer/Footer";
 
 // or
 
@@ -54,8 +55,8 @@ const Welcom = () => {
     <>
       <NavbarPage />
 
-      <h1 style={{ color: "black", textAlign: "center", marginTop: "5%" }}>
-        {numberOfAnnounce?numberOfAnnounce:null} Announces
+      <h1 className="title-welcome">
+        {numberOfAnnounce?numberOfAnnounce:null} Announces:
       </h1>
       <div className="design-pubAnnounce">
         {loadAnnounce ? (
@@ -66,6 +67,7 @@ const Welcom = () => {
         )}
       </div>
       <div className="pagination-pubAnnounce">{items}</div>
+      <Footer/>
     </>
   );
 };
