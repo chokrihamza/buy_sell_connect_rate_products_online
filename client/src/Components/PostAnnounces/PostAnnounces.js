@@ -10,6 +10,7 @@ import "./PostAnnounce.css";
 import { postAnnounce } from "../../js/actions/actionAnnouce";
 import { useHistory } from "react-router-dom";
 import Alert from '@material-ui/lab/Alert';
+import FlashMessage from "react-flash-message";
 const useStyles = makeStyles((theme) => ({
   input: {
     display: "none",
@@ -46,9 +47,22 @@ const PostAnnounces = () => {
 
     dispatch(postAnnounce(data));
   };
-  
+  const postErrorsMsg = useSelector(state => state.announceReducer.postErrors)
+  const loadPostAnnounce = useSelector(state => state.announceReducer.loadPostAnnounce)
+  console.log(loadPostAnnounce)
   return (
- <div className="design-PostAnnounce">
+   
+    <div className="design-PostAnnounce">
+      {loadPostAnnounce ?  <Alert variant="filled" severity="info" >
+               please wait...
+             </Alert>
+        : postErrorsMsg && <FlashMessage duration={1000}
+            
+            >
+              <Alert variant="filled" severity="warning" >
+               {postErrorsMsg.msg}
+             </Alert>
+              </FlashMessage>}
       <div
         className="file-upload"
         style={{
@@ -150,7 +164,7 @@ const PostAnnounces = () => {
         style={{ marginLeft: "43.5%" }}
           onClick={() => {
             handleSubmit();
-            history.push("/Dashboard");
+            //history.push("/Dashboard");
             }}
       >
         Upload

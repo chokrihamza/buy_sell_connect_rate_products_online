@@ -98,6 +98,7 @@ export const postAnnounce = (announce) => async (dispatsh) => {
   try {
     const result = await axios.post("/announce", announce, config);
     dispatsh({ type: POST_ANNOUNCE_SUCCESS, payload: result.data });
+    dispatsh({ type: POST_ANNOUNCE_FAIL, payload:null});
   } catch (error) {
     dispatsh({ type: POST_ANNOUNCE_FAIL, payload: error.response.data });
   }
@@ -153,7 +154,7 @@ export const addComment = (announceId, formData) => async (dispatsh) => {
 };
 
 //Delete comment
-//Add comment
+
 export const deleteComment = (announceId,commentId) => async (dispatsh) => {
   const token = localStorage.getItem("token");
   try {

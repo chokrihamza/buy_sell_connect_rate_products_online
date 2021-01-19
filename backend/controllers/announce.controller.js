@@ -11,13 +11,16 @@ exports.postAnnounce = async (req, res) => {
     const newAnnounce = {};
     
     let images = [];
+    
     let countImages = 0;
     for (const { path } of req.files) {
         images[countImages] = path;
         countImages++;
     }
     newAnnounce.productImages = images;
-    
+    if (images.length == 0) {
+        return res.status(401).json({msg: "you have to put at least one image" });
+    }
     const {
         productName,
         productCategory,
@@ -56,7 +59,7 @@ exports.postAnnounce = async (req, res) => {
 // @desc     Get all announces
 // @access   Private
 exports.getAllannounces = async (req, res) => {
-    console.log(req.query)
+    
     let skip = Number(req.query.skip);
     let val = req.query.search;
     let limit = Number(req.query.limit);
@@ -220,7 +223,7 @@ exports.unlikeAnnounceById = async (req, res) => {
 //@access Private 
 
 exports.commentAnnounceById = async (req, res) => {
-    console.log(req.body);
+    
     try {
         const user = await User.findById(req.user.id).select('-password');
         const profile = await Profile.find({user});
@@ -248,6 +251,7 @@ exports.commentAnnounceById = async (req, res) => {
 //@desc Comment an announce 
 //@access Private 
 exports.deleteCommentByAnnounceId = async (req, res) => {
+    
     try {
         const announce = await Announce.findById(req.params.id);
         //get the comment from the announce 

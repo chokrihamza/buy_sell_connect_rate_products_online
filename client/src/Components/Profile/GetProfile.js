@@ -32,7 +32,7 @@ function GetProfile() {
   const dispatch = useDispatch();
   const announce = useSelector(state => state.announceReducer.announce);
   const loadAnnounce=useSelector(state => state.announceReducer.loadAnnounce);
-  console.log(loadAnnounce)
+  
   const user = useSelector((state) => state.userReducer.user);
   const profile = useSelector((state) => state.profileReducer.profile);
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);

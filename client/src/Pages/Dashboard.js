@@ -17,7 +17,7 @@ import Footer from "../Components/Layout/footer/Footer";
 const Dashboard = () => {
   //get search element
   const [search, setSearch] = useState(null);
-   console.log(`Search ${search}`)
+   
   let x = (value) => {
     setSearch(value)
   }
