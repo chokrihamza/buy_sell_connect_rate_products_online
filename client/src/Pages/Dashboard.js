@@ -16,7 +16,7 @@ import { PaginationItem } from "@material-ui/lab";
 const Dashboard = () => {
   //get search element
   const [search, setSearch] = useState(null);
-   console.log(`Search ${search}`)
+   
   let x = (value) => {
     setSearch(value)
   }
