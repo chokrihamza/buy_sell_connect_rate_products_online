@@ -49,20 +49,28 @@ const PostAnnounces = () => {
   };
   const postErrorsMsg = useSelector(state => state.announceReducer.postErrors)
   const loadPostAnnounce = useSelector(state => state.announceReducer.loadPostAnnounce)
-  console.log(loadPostAnnounce)
+  const addAnnounce = useSelector(state => state.announceReducer.postAnnounce)
+  
   return (
    
     <div className="design-PostAnnounce">
-      {loadPostAnnounce ?  <Alert variant="filled" severity="info" >
+      {loadPostAnnounce ?  (<Alert variant="filled" severity="info" >
                please wait...
-             </Alert>
-        : postErrorsMsg && <FlashMessage duration={1000}
+             </Alert>)
+        : postErrorsMsg ? <FlashMessage duration={1000}
             
             >
               <Alert variant="filled" severity="warning" >
                {postErrorsMsg.msg}
              </Alert>
-              </FlashMessage>}
+        </FlashMessage>:(addAnnounce)?(<FlashMessage duration={1000}>
+        <Alert variant="filled" severity="success" >
+        {addAnnounce.msg}
+      </Alert>
+      </FlashMessage>):null
+      }
+      
+        
       <div
         className="file-upload"
         style={{
