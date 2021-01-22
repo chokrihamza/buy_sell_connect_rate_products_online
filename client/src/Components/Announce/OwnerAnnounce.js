@@ -20,6 +20,7 @@ function OwnerAnnounce({announce}) {
           <p className="card_text">
             {announce.price}Dt/{announce.quantity}Kg
           </p>
+        <button class="btn card_btn" onClick={()=>history.push(`/announce/${announce._id}`)}>Details</button>
         </div>
         </CardActionArea>
       </div>

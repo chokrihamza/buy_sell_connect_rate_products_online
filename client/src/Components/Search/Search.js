@@ -63,7 +63,7 @@ export default function FreeSoloCreateOption(props) {
         return option.title;
       }}
       renderOption={(option) => option.title}
-      style={{ width:"40%" }}
+      style={{ width:"40%" ,marginTop:"1%"}}
       freeSolo
       renderInput={(params) => (
         <TextField {...params} label="Search with category" variant="outlined" />
