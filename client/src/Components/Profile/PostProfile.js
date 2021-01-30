@@ -206,8 +206,9 @@ const PostProfile = () => {
           </form>
         </div>
       </div>
-      <div className="form-group">
-        <button
+      <div className="submitform">
+          <button
+            
           type="button"
           className="btn btn-block create-account"
           onClick={() => dispatch(postProfile(data))}
