@@ -103,7 +103,7 @@
   font-weight: bold;
   background-color: #5791ff;
   border: none;
-  color: white;
+  
   margin-top: 30px;
   width: 30%;
   margin-left: 34%;
@@ -157,4 +157,8 @@
     font-size: 30px;
     line-height: 70px;
   }
+}
+.submitform{
+  display: flex;
+  justify-content:center ;
 }

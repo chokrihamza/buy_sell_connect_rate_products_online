@@ -1,5 +1,5 @@
 const Profile = require("../models/Profile");
-
+const Announce = require('../models/Announce');
 // @ controller for owner profile
 // @route    GET profile/owner
 // @desc     Get current users profile
@@ -126,7 +126,7 @@ exports.getProfileByUserId = async (req, res) => {
 exports.deleteProfile = async (req, res) => {
   try {
     // Remove users posts
-    //await Post.deleteMany({ user: req.user.id });
+    await Announce.deleteMany({ user: req.user.id });
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     // Remove user
