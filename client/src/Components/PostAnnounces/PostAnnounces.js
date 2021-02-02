@@ -172,7 +172,7 @@ const PostAnnounces = () => {
         style={{ marginLeft: "43.5%" }}
           onClick={() => {
             handleSubmit();
-            //history.push("/Dashboard");
+            history.push("/Dashboard");
             }}
       >
         Upload

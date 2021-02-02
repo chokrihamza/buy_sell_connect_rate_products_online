@@ -16,18 +16,19 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 34px;
-  margin-bottom: 4%;
+  
 }
 .aboutus-design p {
   word-spacing: 2px;
   font-size: 16px;
-  background: linear-gradient(210deg, #eee 70.5%, #333 30%);
+  background: linear-gradient(210deg, #eee 71.7%, #333 30%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .aboutus-design img {
   width: 50%;
   margin-left: 24%;
+  margin-top: 2%;
   border-radius: 3px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
