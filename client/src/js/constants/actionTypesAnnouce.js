@@ -29,3 +29,5 @@ export const UPDATE_LIKES_FAIL = "UPDATE_LIKES_FAIL";
 // add and remove comment announce
 export const ADD_COMMENT = "ADD_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
+//Remove post announce
+export const REMOVE_POST_ANNOUNCE = "REMOVE_POST_ANNOUNCE";

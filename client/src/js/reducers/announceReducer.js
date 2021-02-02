@@ -19,7 +19,8 @@ import {
   UPDATE_LIKES,
   UPDATE_LIKES_FAIL,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  REMOVE_COMMENT,
+  REMOVE_POST_ANNOUNCE
 
 } from "../constants/actionTypesAnnouce";
 
@@ -104,6 +105,9 @@ const announceReducer = (state = initialState, { type, payload }) => {
         ...state,
         announceid:{...state.announce,comments:state.announceid.comments.filter(comment=>comment._id!==payload), loadAnnounce: false}
       }
+    case REMOVE_POST_ANNOUNCE:
+      return { ...state, loadPostAnnounce: false,postAnnounce: null,
+        postErrors: null };
 
     default:
       return state;
