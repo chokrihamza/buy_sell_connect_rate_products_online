@@ -20,7 +20,8 @@ import {
   UPDATE_LIKES,
   UPDATE_LIKES_FAIL,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  REMOVE_COMMENT,
+  REMOVE_POST_ANNOUNCE
 } from "../constants/actionTypesAnnouce";
 
 // get all of public announce
@@ -98,7 +99,8 @@ export const postAnnounce = (announce) => async (dispatsh) => {
   try {
     const result = await axios.post("/announce", announce, config);
     dispatsh({ type: POST_ANNOUNCE_SUCCESS, payload: result.data });
-    dispatsh({ type: POST_ANNOUNCE_FAIL, payload:null});
+    dispatsh({ type: POST_ANNOUNCE_FAIL, payload: null });
+    dispatsh({ type: REMOVE_POST_ANNOUNCE });
   } catch (error) {
     dispatsh({ type: POST_ANNOUNCE_FAIL, payload: error.response.data });
   }
