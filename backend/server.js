@@ -18,7 +18,8 @@ const express = require('express');
 const app = express();
 const config = require('config');
 const PORT = config.get('PORT');
-const cors = require('cors')
+const cors = require('cors');
+const path = require('path');
 // Express body parser
 //using admin bro 
 AdminBro.registerAdapter(AdminBroMongoose);
@@ -68,8 +69,16 @@ app.use('/profile', require('./Routes/profile'));
 
 //create Announce routes
 app.use('/announce', require('./Routes/announce'));
+const dirname = path.resolve();
+if (config.get('NODE_ENV') === 'production') {
+      app.use(express.static(path.join(dirname, '/client/build')));
+      app.get('*', (req, res) => 
+            res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+      )
+}
 
-app.listen(PORT, (err) => {
+
+app.listen(process.env.PORT||PORT, (err) => {
       err ? console.log(err) : console.log(`server running at port ${PORT}`)
 })
 

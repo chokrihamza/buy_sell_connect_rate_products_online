@@ -19,7 +19,8 @@
   "scripts": {
     "server": "cd backend && npm run dev",
     "client": "cd client && npm start",
-    "start": "concurrently \"npm run client\" \"npm run server\""
+    "start": "concurrently \"npm run client\" \"npm run server\"",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "chokri hamza",
   "license": "ISC"
