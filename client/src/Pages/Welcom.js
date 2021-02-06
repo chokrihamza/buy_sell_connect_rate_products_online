@@ -12,8 +12,14 @@ import Footer from "../Components/Layout/footer/Footer";
 // or
 
 const Welcom = () => {
+  const dispatch = useDispatch();
   const [limit] = useState(8);
   const [skip, setSkip] = useState(0);
+  // make pagination
+  useEffect(() => {
+    dispatch(getPublicAnnounce(skip, limit));
+  }, [skip, limit]);
+  
   const numberOfAnnounce = useSelector(
     (state) => state.announceReducer.announce.numberOfAnnounce
   );
@@ -27,7 +33,7 @@ const Welcom = () => {
       <PaginationItem
         key={number}
         page={number}
-        style={{ color: "white" }}
+        style={{ color: "black" }}
         color="primary"
         variant="outlined"
         size="medium"
@@ -37,7 +43,7 @@ const Welcom = () => {
     );
   }
 
-  const dispatch = useDispatch();
+  
   const pubAnnounce = useSelector(
     (state) => state.announceReducer.announce.announces
   );
@@ -46,10 +52,7 @@ const Welcom = () => {
     (state) => state.announceReducer.loadAnnounce
   );
   const errors = useSelector((state) => state.announceReducer.errors);
-  // make pagination
-  useEffect(() => {
-    dispatch(getPublicAnnounce(skip, limit));
-  }, [skip, limit]);
+  
 
   return (
     <>

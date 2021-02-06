@@ -26,11 +26,9 @@ const peristedState = loadFromLocalStorage();
 
 
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
- const store = createStore(
-      rootReducers,peristedState,
-  composeEnhancer(applyMiddleware(thunk))
-);
+//const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+ const store = createStore(rootReducers,peristedState,applyMiddleware(thunk));//composeEnhancer(applyMiddleware(thunk))
+//
 store.subscribe(() => {
   saveToLoacalStorage(store.getState());
 });

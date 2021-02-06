@@ -35,7 +35,7 @@ function PublicAnnounce({ announce }) {
       data-position="left bottom"
     >
       <Card className={classes.root}>
-        <CardActionArea onClick={() => history.push("/register  ")}>
+        <CardActionArea onClick={() => history.push("/register")}>
           <CardMedia
             component="img"
             alt="productImage"

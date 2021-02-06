@@ -15,6 +15,7 @@ import { UncontrolledAlert } from 'reactstrap';
 import { PaginationItem } from "@material-ui/lab";
 import Footer from "../Components/Layout/footer/Footer";
 const Dashboard = () => {
+  const dispatch = useDispatch();
   //get search element
   const [search, setSearch] = useState(null);
    
@@ -24,13 +25,19 @@ const Dashboard = () => {
   // add pagination
   const [limit] = useState(8);
   const [skip, setSkip] = useState(0);
+  useEffect(() => {
+    dispatch(getOwnerProfile());
+    dispatch(getUser());
+    dispatch(getPrivateAnnounce(search, limit,skip));
+  }, [search,skip, limit]);
+  
   const numberOfAnnounce = useSelector(
     (state) => state.announceReducer.announce.numberOfAnnounce
   );
   let items = [];
   for (
     let number = 1;
-    number <= Math.ceil(numberOfAnnounce / limit);
+    number <= Math.ceil(numberOfAnnounce&&numberOfAnnounce / limit);
     number++
   ) {
     items.push(
@@ -53,19 +60,14 @@ const Dashboard = () => {
   const user = useSelector((state) => state.userReducer.user);
   const loadUser = useSelector((state) => state.userReducer.loadUser);
   const loadProfile = useSelector((state) => state.profileReducer.loadProfile);
-  const dispatch = useDispatch();
+ 
   const announce = useSelector((state) => state.announceReducer.announce.announces);
   
   const loadAnnounce = useSelector(
     (state) => state.announceReducer.loadAnnounce
   );
   
-  useEffect(() => {
-    dispatch(getOwnerProfile());
-    dispatch(getUser());
-    dispatch(getPrivateAnnounce(search, limit,skip));
-  }, [search,skip, limit]);
-  
+
   if (loadProfile && loadUser) {
     return (
       <>
